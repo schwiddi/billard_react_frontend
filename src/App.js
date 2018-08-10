@@ -9,7 +9,7 @@ class App extends Component {
           <h1 className="App-title">R21 Billard App</h1>
         </header>
         <p className="App-intro">
-          This will be your Billard App
+        some text
         </p>
       </div>
     );
