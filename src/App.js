@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
 class App extends Component {
   render() {
@@ -8,9 +8,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">R21 Billard App</h1>
         </header>
-        <p className="App-intro">
-        some text
-        </p>
+        <p className="App-intro">some text</p>
       </div>
     );
   }
