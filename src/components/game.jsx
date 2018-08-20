@@ -21,13 +21,12 @@ class Game extends Component {
         <td>
           <p className="text-right">{this.state.playerA}</p>
         </td>
-        <td>
-          <p className="text-right">
+        <td colSpan="2">
+          <p className="text-center">
             {this.formatScore(this.state.scoreplayerA)}
-          </p>
-        </td>
-        <td>
-          <p className="text-left">
+            <span style={defaultsytle}>
+              <strong className="m-1">:</strong>
+            </span>
             {this.formatScore(this.state.scoreplayerB)}
           </p>
         </td>
