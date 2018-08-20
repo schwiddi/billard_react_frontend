@@ -9,7 +9,9 @@ class Games extends Component {
         <table className="table table-hover">
           <thead>
             <tr>
-              <th scope="col">#</th>
+              <th scope="col">
+                <p>#</p>
+              </th>
               <th scope="col">
                 <p className="text-right">Player</p>
               </th>
