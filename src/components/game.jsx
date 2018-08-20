@@ -5,12 +5,11 @@ let defaultsytle = { fontSize: 18 };
 
 class Game extends Component {
   state = {
-    _id: '1',
-    playerA: 'Bäsä',
-    playerB: 'Schwiddi',
-    scoreplayerA: 0,
-    scoreplayerB: 1,
-    date: '2018-08-19T12:09:32.152Z'
+    _id: this.props._id,
+    playerA: this.props.playerA,
+    playerB: this.props.playerB,
+    scoreplayerA: this.props.scoreplayerA,
+    scoreplayerB: this.props.scoreplayerB
   };
 
   render() {

@@ -1,59 +1,35 @@
 const games = [
   {
     _id: '1',
-    playerA: 'Ludi',
-    playerB: 'Hansi',
+    playerA: 'Mani',
+    playerB: 'Schwiddi',
     scoreplayerA: 0,
     scoreplayerB: 1,
     date: '2018-08-19T12:09:32.152Z'
   },
   {
     _id: '2',
-    playerA: 'Bert',
-    playerB: 'Elfriede',
-    scoreplayerA: 1,
-    scoreplayerB: 0,
-    date: '2018-08-19T12:09:43.338Z'
+    playerA: 'Bäsä',
+    playerB: 'Till',
+    scoreplayerA: 0,
+    scoreplayerB: 1,
+    date: '2018-08-19T12:09:32.152Z'
   },
   {
     _id: '3',
-    playerA: 'Rosemarie',
-    playerB: 'Lea',
-    scoreplayerA: 1,
-    scoreplayerB: 0,
-    date: '2018-08-19T12:09:52.980Z'
+    playerA: 'Uli',
+    playerB: 'Hans',
+    scoreplayerA: 0,
+    scoreplayerB: 1,
+    date: '2018-08-19T12:09:32.152Z'
   },
   {
     _id: '4',
-    playerA: 'Mark',
-    playerB: 'Christian',
+    playerA: 'Sabe',
+    playerB: 'Michelle',
     scoreplayerA: 1,
     scoreplayerB: 0,
-    date: '2018-08-19T12:10:02.803Z'
-  },
-  {
-    _id: '5',
-    playerA: 'Bäsä',
-    playerB: 'Schwiddi',
-    scoreplayerA: 1,
-    scoreplayerB: 0,
-    date: '2018-08-19T19:12:34.900Z'
-  },
-  {
-    _id: '6',
-    playerA: 'Bäsä',
-    playerB: 'Schwiddi',
-    scoreplayerA: 1,
-    scoreplayerB: 0,
-    date: '2018-08-19T20:36:37.365Z'
-  },
-  {
-    _id: '7',
-    playerA: 'Bäsä',
-    playerB: 'Schwiddi',
-    scoreplayerA: 1,
-    scoreplayerB: 0,
-    date: '2018-08-20T07:40:42.836Z'
+    date: '2018-08-19T12:09:43.338Z'
   }
 ];
 
