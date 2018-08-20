@@ -25,6 +25,11 @@ class Games extends Component {
           </thead>
           <tbody>
             <Game />
+            <Game />
+            <Game />
+            <Game />
+            <Game />
+            <Game />
           </tbody>
         </table>
       </div>

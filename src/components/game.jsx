@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 
+let defaultsytle = { fontSize: 18 };
+
 class Game extends Component {
   state = {
     _id: '1',
@@ -40,19 +42,19 @@ class Game extends Component {
   formatScore(score) {
     if (score === 1) {
       return (
-        <span style={{ fontSize: 20 }} className="badge badge-success">
+        <span style={defaultsytle} className="badge badge-success">
           {score}
         </span>
       );
     } else if (score === 0) {
       return (
-        <span style={{ fontSize: 20 }} className="badge badge-secondary">
+        <span style={defaultsytle} className="badge badge-secondary">
           {score}
         </span>
       );
     } else {
       return (
-        <span style={{ fontSize: 20 }} className="badge">
+        <span style={defaultsytle} className="badge">
           {score}
         </span>
       );
