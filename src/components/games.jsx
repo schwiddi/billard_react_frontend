@@ -21,7 +21,7 @@ class Games extends Component {
           <thead>
             <tr>
               <th scope="col">
-                <p>#</p>
+                <p className="text-right">#</p>
               </th>
               <th scope="col">
                 <p className="text-right">Player</p>

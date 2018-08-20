@@ -16,7 +16,7 @@ class Game extends Component {
     return (
       <tr>
         <td>
-          <p>{this.state._id}</p>
+          <p className="text-right">{this.state._id}</p>
         </td>
         <td>
           <p className="text-right">{this.state.playerA}</p>
