@@ -6,7 +6,9 @@ class NavBar extends Component {
   render() {
     return (
       <nav className="navbar navbar-dark bg-dark">
-        <h1 className="text-light">r21</h1>
+        <a className="text-light" href="">
+          r21 Billard
+        </a>
       </nav>
     );
   }

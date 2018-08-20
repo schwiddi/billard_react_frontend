@@ -14,6 +14,10 @@ class Games extends Component {
     alert(`Game was deleted: ${gameId}`);
   };
 
+  handleNew = () => {
+    alert('Not implemented yet...');
+  };
+
   render() {
     const { length: gamescount } = this.state.games;
 
@@ -22,7 +26,15 @@ class Games extends Component {
 
     return (
       <React.Fragment>
-        <p className="text-left m-2">{gamescount} Game(s) in Database.</p>
+        <span className="text-left m-1">{gamescount} Game(s) in Database.</span>
+        <span className="text-right m-1">
+          <button
+            onClick={this.handleNew}
+            className="btn btn-primary btn-sm m-1"
+          >
+            New
+          </button>
+        </span>
         <table className="table table-hover">
           <thead>
             <tr>

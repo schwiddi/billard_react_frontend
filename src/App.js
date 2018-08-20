@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import NavBar from './components/nav';
+import NavBar from './components/navbar';
 import Games from './components/games';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <main className="container">
+      <React.Fragment>
         <NavBar />
-        <Games />
-      </main>
+        <main className="container">
+          <Games />
+        </main>
+      </React.Fragment>
     );
   }
 }

@@ -4,34 +4,26 @@ import 'bootstrap/dist/css/bootstrap.css';
 let defaultsytle = { fontSize: 18 };
 
 class Game extends Component {
-  state = {
-    _id: this.props.game._id,
-    playerA: this.props.game.playerA,
-    playerB: this.props.game.playerB,
-    scoreplayerA: this.props.game.scoreplayerA,
-    scoreplayerB: this.props.game.scoreplayerB
-  };
-
   render() {
     return (
       <tr onClick={() => this.props.onDelete(this.props.game._id)}>
         <td>
-          <p className="text-right">{'...' + this.state._id.slice(-3)}</p>
+          <p className="text-right">{'...' + this.props.game._id.slice(-3)}</p>
         </td>
         <td>
-          <p className="text-right">{this.state.playerA}</p>
+          <p className="text-right">{this.props.game.playerA}</p>
         </td>
         <td colSpan="2">
           <p className="text-center">
-            {this.formatScore(this.state.scoreplayerA)}
+            {this.formatScore(this.props.game.scoreplayerA)}
             <span style={defaultsytle}>
               <strong className="m-1">:</strong>
             </span>
-            {this.formatScore(this.state.scoreplayerB)}
+            {this.formatScore(this.props.game.scoreplayerB)}
           </p>
         </td>
         <td>
-          <p className="text-left">{this.state.playerB}</p>
+          <p className="text-left">{this.props.game.playerB}</p>
         </td>
       </tr>
     );
