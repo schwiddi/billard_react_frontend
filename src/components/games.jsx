@@ -11,15 +11,6 @@ class Games extends Component {
 
     return (
       <React.Fragment>
-        <span className="text-left m-1">{gamescount} Game(s) in Database.</span>
-        <span className="text-right m-1">
-          <button
-            onClick={this.props.onNew}
-            className="btn btn-primary btn-sm m-1"
-          >
-            New
-          </button>
-        </span>
         <table className="table table-hover">
           <thead>
             <tr>

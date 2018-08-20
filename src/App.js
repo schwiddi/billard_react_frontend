@@ -23,13 +23,15 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar />
-        <main className="container">
-          <Games
-            onDelete={this.handleDelete}
-            onNew={this.handleNew}
-            games={this.state.games}
-          />
+        <NavBar games={this.state.games} />
+        <main role="main" className="container">
+          <div className="starter-template">
+            <Games
+              onDelete={this.handleDelete}
+              onNew={this.handleNew}
+              games={this.state.games}
+            />
+          </div>
         </main>
       </React.Fragment>
     );

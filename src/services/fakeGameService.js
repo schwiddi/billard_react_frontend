@@ -11,8 +11,8 @@ const games = [
     _id: '5b795e1ab0532cf66e87aa34',
     playerA: 'Mark',
     playerB: 'Christian',
-    scoreplayerA: 1,
-    scoreplayerB: 0,
+    scoreplayerA: 0,
+    scoreplayerB: 1,
     date: '2018-08-19T12:10:02.803Z'
   },
   {
@@ -27,16 +27,16 @@ const games = [
     _id: '5b79d4d548c7dc0e4970f213',
     playerA: 'Bäsä',
     playerB: 'Schwiddi',
-    scoreplayerA: 1,
-    scoreplayerB: 0,
+    scoreplayerA: 0,
+    scoreplayerB: 1,
     date: '2018-08-19T20:36:37.365Z'
   },
   {
     _id: '5b7a707a9a97de15c9e8a4cd',
     playerA: 'Bäsä',
     playerB: 'Schwiddi',
-    scoreplayerA: 1,
-    scoreplayerB: 0,
+    scoreplayerA: 0,
+    scoreplayerB: 1,
     date: '2018-08-20T07:40:42.836Z'
   },
   {
@@ -83,8 +83,8 @@ const games = [
     _id: '5b7b248f878ef243896d91c3',
     playerA: 'Peter',
     playerB: 'Paul',
-    scoreplayerA: 1,
-    scoreplayerB: 0,
+    scoreplayerA: 0,
+    scoreplayerB: 1,
     date: '2018-08-20T20:29:03.952Z'
   },
   {
