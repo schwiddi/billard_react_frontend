@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
+import NavBar from './components/nav';
+import Games from './components/games';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">R21 Billard App</h1>
-        </header>
-        <p className="App-intro">some text</p>
-      </div>
+      <main className="container">
+        <NavBar />
+        <Games />
+      </main>
     );
   }
 }
