@@ -23,7 +23,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar onNew={this.handleNew} games={this.state.games} />
+        <NavBar onNew={this.handleNew} totalGames={this.state.games.length} />
         <main role="main" className="container">
           <div className="starter-template">
             <Games onDelete={this.handleDelete} games={this.state.games} />
