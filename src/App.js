@@ -6,7 +6,7 @@ import Games from './components/games';
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="m-2">
         <NavBar />
         <Games />
       </div>
