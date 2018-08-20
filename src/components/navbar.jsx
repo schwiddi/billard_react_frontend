@@ -11,7 +11,7 @@ class NavBar extends Component {
           r21Billard
         </a>
         <span style={defaultsytle} className="badge badge-success">
-          {gamescount + ' Games'}
+          {gamescount}
         </span>
         <button
           onClick={this.props.onNew}
