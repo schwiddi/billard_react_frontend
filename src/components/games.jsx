@@ -1,25 +1,10 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Game from './game';
-import { getGames } from '../services/fakeGameService';
 
 class Games extends Component {
-  state = {
-    games: getGames()
-  };
-
-  handleDelete = gameId => {
-    const newgames = this.state.games.filter(i => i._id !== gameId);
-    this.setState({ games: newgames });
-    alert(`Game was deleted: ${gameId}`);
-  };
-
-  handleNew = () => {
-    alert('Not implemented yet...');
-  };
-
   render() {
-    const { length: gamescount } = this.state.games;
+    const { length: gamescount } = this.props.games;
 
     if (gamescount === 0)
       return <p className="text-center m-1">No Games in Database</p>;
@@ -29,7 +14,7 @@ class Games extends Component {
         <span className="text-left m-1">{gamescount} Game(s) in Database.</span>
         <span className="text-right m-1">
           <button
-            onClick={this.handleNew}
+            onClick={this.props.onNew}
             className="btn btn-primary btn-sm m-1"
           >
             New
@@ -53,8 +38,8 @@ class Games extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.games.map(game => (
-              <Game key={game._id} onDelete={this.handleDelete} game={game} />
+            {this.props.games.map(game => (
+              <Game key={game._id} onDelete={this.props.onDelete} game={game} />
             ))}
           </tbody>
         </table>
