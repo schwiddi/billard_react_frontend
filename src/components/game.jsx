@@ -14,9 +14,9 @@ class Game extends Component {
 
   render() {
     return (
-      <tr>
+      <tr onClick={() => this.props.onDelete(this.props._id)}>
         <td>
-          <p className="text-right">{this.state._id}</p>
+          <p className="text-right">{'...' + this.state._id.slice(-3)}</p>
         </td>
         <td>
           <p className="text-right">{this.state.playerA}</p>

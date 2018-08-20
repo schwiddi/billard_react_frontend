@@ -8,15 +8,21 @@ class Games extends Component {
     games: getGames()
   };
 
+  handleDelete = gameId => {
+    const newgames = this.state.games.filter(i => i._id !== gameId);
+    this.setState({ games: newgames });
+    alert(`Game was deleted: ${gameId}`);
+  };
+
   render() {
     const { length: gamescount } = this.state.games;
 
     if (gamescount === 0)
-      return <p className="text-center">No Games in Database</p>;
+      return <p className="text-center m-1">No Games in Database</p>;
 
     return (
       <React.Fragment>
-        <p className="text-left">{gamescount} Game(s) in the Database.</p>
+        <p className="text-left m-2">{gamescount} Game(s) in Database.</p>
         <table className="table table-hover">
           <thead>
             <tr>
@@ -43,6 +49,7 @@ class Games extends Component {
                 playerB={game.playerB}
                 scoreplayerA={game.scoreplayerA}
                 scoreplayerB={game.scoreplayerB}
+                onDelete={this.handleDelete}
               />
             ))}
           </tbody>
