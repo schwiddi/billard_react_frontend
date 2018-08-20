@@ -42,15 +42,7 @@ class Games extends Component {
           </thead>
           <tbody>
             {this.state.games.map(game => (
-              <Game
-                key={game._id}
-                _id={game._id}
-                playerA={game.playerA}
-                playerB={game.playerB}
-                scoreplayerA={game.scoreplayerA}
-                scoreplayerB={game.scoreplayerB}
-                onDelete={this.handleDelete}
-              />
+              <Game key={game._id} onDelete={this.handleDelete} game={game} />
             ))}
           </tbody>
         </table>

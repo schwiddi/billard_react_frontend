@@ -5,16 +5,16 @@ let defaultsytle = { fontSize: 18 };
 
 class Game extends Component {
   state = {
-    _id: this.props._id,
-    playerA: this.props.playerA,
-    playerB: this.props.playerB,
-    scoreplayerA: this.props.scoreplayerA,
-    scoreplayerB: this.props.scoreplayerB
+    _id: this.props.game._id,
+    playerA: this.props.game.playerA,
+    playerB: this.props.game.playerB,
+    scoreplayerA: this.props.game.scoreplayerA,
+    scoreplayerB: this.props.game.scoreplayerB
   };
 
   render() {
     return (
-      <tr onClick={() => this.props.onDelete(this.props._id)}>
+      <tr onClick={() => this.props.onDelete(this.props.game._id)}>
         <td>
           <p className="text-right">{'...' + this.state._id.slice(-3)}</p>
         </td>
