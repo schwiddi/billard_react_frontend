@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 
-let defaultsytle = { fontSize: 20 };
+let defaultsytle = { fontSize: 15 };
 class NavBar extends Component {
   render() {
     return (
@@ -9,8 +9,11 @@ class NavBar extends Component {
         <a className="navbar-brand" href="">
           r21Billard
         </a>
-        <span class="badge badge-light">{this.props.totalGames}</span>
+        <span style={defaultsytle} className="badge badge-pill badge-light m-2">
+          {this.props.totalGames}
+        </span>
         <button
+          style={defaultsytle}
           onClick={this.props.onNew}
           className="btn btn-primary btn-sm m-2"
         >
