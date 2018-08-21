@@ -9,7 +9,9 @@ import _ from 'lodash';
 class App extends Component {
   state = {
     games: getGames(),
-    players: []
+    players: [],
+    pageSize: 10,
+    currentPage: 1
   };
 
   componentWillMount = () => {
@@ -40,6 +42,10 @@ class App extends Component {
     alert('Not implemented yet...');
   };
 
+  handlePageChange = page => {
+    this.setState({ currentPage: page });
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -50,7 +56,13 @@ class App extends Component {
         />
         <main role="main" className="container">
           <div className="starter-template">
-            <Games onDelete={this.handleDelete} games={this.state.games} />
+            <Games
+              onDelete={this.handleDelete}
+              games={this.state.games}
+              pageSize={this.state.pageSize}
+              currentPage={this.state.currentPage}
+              onPageChange={this.handlePageChange}
+            />
           </div>
         </main>
       </React.Fragment>
