@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 const games = [
   {
     _id: '5b795e07b0532cf66e87aa32',
