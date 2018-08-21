@@ -10,7 +10,7 @@ class App extends Component {
   state = {
     games: getGames(),
     players: [],
-    pageSize: 10,
+    pageSize: 6,
     currentPage: 1
   };
 
