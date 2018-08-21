@@ -40,7 +40,7 @@ class Games extends Component {
           </tbody>
         </table>
         <Pagination
-          gamesCount={gamesCount}
+          itemsCount={gamesCount}
           pageSize={pageSize}
           currentPage={currentPage}
           onPageChange={onPageChange}

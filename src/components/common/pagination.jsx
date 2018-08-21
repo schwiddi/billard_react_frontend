@@ -1,9 +1,10 @@
 import React from 'react';
 import _ from 'lodash';
+import PropTypes from 'prop-types';
 
 const Pagination = props => {
-  const { gamesCount, pageSize, onPageChange, currentPage } = props;
-  const pagesCount = Math.ceil(gamesCount / pageSize);
+  const { itemsCount, pageSize, onPageChange, currentPage } = props;
+  const pagesCount = Math.ceil(itemsCount / pageSize);
   if (pagesCount === 1) return null;
   const pages = _.range(1, pagesCount + 1);
   return (
@@ -27,6 +28,13 @@ const Pagination = props => {
       </ul>
     </nav>
   );
+};
+
+Pagination.propTypes = {
+  gamesCount: PropTypes.number.isRequired,
+  pageSize: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired
 };
 
 export default Pagination;
