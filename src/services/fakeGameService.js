@@ -151,15 +151,3 @@ export function deleteGame(id) {
   games.splice(games.indexOf(gameInDb), 1);
   return gameInDb;
 }
-
-export function getPlayers() {
-  const allgames = games;
-  let allplayers = [];
-  for (let i = 0; i < allgames.length; i++) {
-    allplayers.push(allgames[i].playerA);
-    allplayers.push(allgames[i].playerB);
-  }
-  let playersdistinct = _.uniq(allplayers);
-
-  return playersdistinct;
-}
