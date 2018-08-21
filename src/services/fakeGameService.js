@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 const games = [
   {
     _id: '5b795e07b0532cf66e87aa32',
@@ -148,4 +150,16 @@ export function deleteGame(id) {
   let gameInDb = games.find(i => i._id === id);
   games.splice(games.indexOf(gameInDb), 1);
   return gameInDb;
+}
+
+export function getPlayers() {
+  const allgames = games;
+  let allplayers = [];
+  for (let i = 0; i < allgames.length; i++) {
+    allplayers.push(allgames[i].playerA);
+    allplayers.push(allgames[i].playerB);
+  }
+  let playersdistinct = _.uniq(allplayers);
+
+  return playersdistinct;
 }

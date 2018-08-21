@@ -10,7 +10,10 @@ class NavBar extends Component {
           r21Billard
         </a>
         <span style={defaultsytle} className="badge badge-pill badge-light m-2">
-          {this.props.totalGames}
+          Games: {this.props.totalGames}
+        </span>
+        <span style={defaultsytle} className="badge badge-pill badge-light m-2">
+          Players: {this.props.totalPlayers}
         </span>
         <button
           style={defaultsytle}

@@ -4,16 +4,36 @@ import Games from './components/games';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import { getGames } from './services/fakeGameService';
+import _ from 'lodash';
 
 class App extends Component {
   state = {
-    games: getGames()
+    games: getGames(),
+    players: []
+  };
+
+  componentWillMount = () => {
+    const allgames = this.state.games;
+    let allplayers = [];
+    for (let i = 0; i < allgames.length; i++) {
+      allplayers.push(allgames[i].playerA);
+      allplayers.push(allgames[i].playerB);
+    }
+    let playersdistinct = _.uniq(allplayers);
+    this.setState({ players: playersdistinct });
   };
 
   handleDelete = gameId => {
     const newgames = this.state.games.filter(i => i._id !== gameId);
     this.setState({ games: newgames });
-    alert(`Game was deleted: ${gameId}`);
+    const allgames = newgames;
+    let allplayers = [];
+    for (let i = 0; i < allgames.length; i++) {
+      allplayers.push(allgames[i].playerA);
+      allplayers.push(allgames[i].playerB);
+    }
+    let playersdistinct = _.uniq(allplayers);
+    this.setState({ players: playersdistinct });
   };
 
   handleNew = () => {
@@ -23,7 +43,11 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar onNew={this.handleNew} totalGames={this.state.games.length} />
+        <NavBar
+          totalPlayers={this.state.players.length}
+          onNew={this.handleNew}
+          totalGames={this.state.games.length}
+        />
         <main role="main" className="container">
           <div className="starter-template">
             <Games onDelete={this.handleDelete} games={this.state.games} />
