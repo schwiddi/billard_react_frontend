@@ -5,6 +5,13 @@ import Games from './components/games';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import _ from 'lodash';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+axios.interceptors.response.use(null, error => {
+  toast.error('Something went wrong....');
+  return Promise.reject(error);
+});
 
 const endPoint = 'http://localhost:3001/api/v1/';
 
@@ -54,12 +61,13 @@ class App extends Component {
       ]);
       const pushnewgamestate = [newtmpgame, ...this.state.games];
       this.setState({ games: pushnewgamestate });
-    } catch (error) {}
+    } catch (ex) {}
   };
 
   render() {
     return (
       <React.Fragment>
+        <ToastContainer />
         <NavBar
           totalPlayers={this.state.players.length}
           onNew={this.handleNewGame}
