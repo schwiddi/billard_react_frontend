@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Game from './game';
-import Pagination from './common/pagination';
-import { paginate } from '../utils/paginate';
 
 class Games extends Component {
   render() {
     const { length: gamesCount } = this.props.games;
-    const { pageSize, currentPage, onPageChange, onDelete, games } = this.props;
+    const { onDelete, games } = this.props;
 
     if (gamesCount === 0)
       return <p className="text-center m-1">No Games in Database</p>;
 
-    const pagedGames = paginate(games, currentPage, pageSize);
+    const pagedGames = games;
 
     return (
       <React.Fragment>
@@ -39,12 +37,6 @@ class Games extends Component {
             ))}
           </tbody>
         </table>
-        <Pagination
-          itemsCount={gamesCount}
-          pageSize={pageSize}
-          currentPage={currentPage}
-          onPageChange={onPageChange}
-        />
       </React.Fragment>
     );
   }
