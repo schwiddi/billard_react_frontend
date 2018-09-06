@@ -1,43 +1,53 @@
 import React, { Component } from 'react';
 import NavBar from './components/navbar';
+import axios from 'axios';
 import Games from './components/games';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import { getGames } from './services/fakeGameService';
 import _ from 'lodash';
+
+const endpoint = 'http://localhost:3001/api/v1/';
 
 class App extends Component {
   state = {
-    games: getGames(),
+    games: [],
     players: []
   };
 
-  componentWillMount = () => {
-    const allgames = this.state.games;
-    let allplayers = [];
-    for (let i = 0; i < allgames.length; i++) {
-      allplayers.push(allgames[i].playerA);
-      allplayers.push(allgames[i].playerB);
-    }
-    let playersdistinct = _.uniq(allplayers);
-    this.setState({ players: playersdistinct });
-  };
+  async componentDidMount() {
+    const { data: games } = await axios.get(endpoint + 'games');
+    this.setState({ games });
 
-  handleDelete = gameId => {
-    const newgames = this.state.games.filter(i => i._id !== gameId);
+    const { data: players } = await axios.get(endpoint + 'players');
+    this.setState({ players });
+  }
+
+  handleDelete = async id => {
+    axios.delete(endpoint + 'games/' + id);
+
+    const newgames = this.state.games.filter(p => p.id !== id);
+
     this.setState({ games: newgames });
-    const allgames = newgames;
-    let allplayers = [];
-    for (let i = 0; i < allgames.length; i++) {
-      allplayers.push(allgames[i].playerA);
-      allplayers.push(allgames[i].playerB);
-    }
-    let playersdistinct = _.uniq(allplayers);
-    this.setState({ players: playersdistinct });
   };
 
-  handleNew = () => {
-    alert('Not implemented yet...');
+  handleNewGame = async () => {
+    const newgame = {
+      playerA: 'zzz',
+      playerB: 'ffhhf',
+      scoreplayerA: 0,
+      scoreplayerB: 1
+    };
+    const { data: game } = await axios.post(endpoint + 'games', newgame);
+    const tmpgame = game[0];
+    const newtmpgame = _.pick(tmpgame, [
+      'id',
+      'playerA',
+      'scoreplayerA',
+      'playerB',
+      'scoreplayerB'
+    ]);
+    const pushnewgamestate = [newtmpgame, ...this.state.games];
+    this.setState({ games: pushnewgamestate });
   };
 
   render() {
@@ -45,7 +55,7 @@ class App extends Component {
       <React.Fragment>
         <NavBar
           totalPlayers={this.state.players.length}
-          onNew={this.handleNew}
+          onNew={this.handleNewGame}
           totalGames={this.state.games.length}
         />
         <main role="main" className="container">

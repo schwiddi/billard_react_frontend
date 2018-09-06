@@ -4,13 +4,7 @@ import Game from './game';
 
 class Games extends Component {
   render() {
-    const { length: gamesCount } = this.props.games;
     const { onDelete, games } = this.props;
-
-    if (gamesCount === 0)
-      return <p className="text-center m-1">No Games in Database</p>;
-
-    const pagedGames = games;
 
     return (
       <React.Fragment>
@@ -32,8 +26,8 @@ class Games extends Component {
             </tr>
           </thead>
           <tbody>
-            {pagedGames.map(game => (
-              <Game key={game._id} onDelete={onDelete} game={game} />
+            {games.map(game => (
+              <Game key={game.id} onDelete={onDelete} game={game} />
             ))}
           </tbody>
         </table>

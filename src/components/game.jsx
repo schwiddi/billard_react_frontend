@@ -6,9 +6,9 @@ let defaultsytle = { fontSize: 18 };
 class Game extends Component {
   render() {
     return (
-      <tr onClick={() => this.props.onDelete(this.props.game._id)}>
+      <tr onClick={() => this.props.onDelete(this.props.game.id)}>
         <td>
-          <p className="text-right">{'...' + this.props.game._id.slice(-3)}</p>
+          <p className="text-right">{this.props.game.id}</p>
         </td>
         <td>
           <p className="text-right">{this.props.game.playerA}</p>
