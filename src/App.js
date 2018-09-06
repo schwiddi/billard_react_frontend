@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import _ from 'lodash';
 
-const endpoint = 'http://localhost:3001/api/v1/';
+const endPoint = 'http://localhost:3001/api/v1/';
 
 class App extends Component {
   state = {
@@ -15,19 +15,23 @@ class App extends Component {
   };
 
   async componentDidMount() {
-    const { data: games } = await axios.get(endpoint + 'games');
+    const { data: games } = await axios.get(endPoint + 'games');
     this.setState({ games });
 
-    const { data: players } = await axios.get(endpoint + 'players');
+    const { data: players } = await axios.get(endPoint + 'players');
     this.setState({ players });
   }
 
   handleDelete = async id => {
-    axios.delete(endpoint + 'games/' + id);
+    const originalGames = this.state.games;
+    const newGames = this.state.games.filter(p => p.id !== id);
+    this.setState({ games: newGames });
 
-    const newgames = this.state.games.filter(p => p.id !== id);
-
-    this.setState({ games: newgames });
+    try {
+      await axios.delete(endPoint + 'games/' + id);
+    } catch (ex) {
+      this.setState({ games: originalGames });
+    }
   };
 
   handleNewGame = async () => {
@@ -37,17 +41,20 @@ class App extends Component {
       scoreplayerA: 0,
       scoreplayerB: 1
     };
-    const { data: game } = await axios.post(endpoint + 'games', newgame);
-    const tmpgame = game[0];
-    const newtmpgame = _.pick(tmpgame, [
-      'id',
-      'playerA',
-      'scoreplayerA',
-      'playerB',
-      'scoreplayerB'
-    ]);
-    const pushnewgamestate = [newtmpgame, ...this.state.games];
-    this.setState({ games: pushnewgamestate });
+
+    try {
+      const { data: game } = await axios.post(endPoint + 'games', newgame);
+      const tmpgame = game[0];
+      const newtmpgame = _.pick(tmpgame, [
+        'id',
+        'playerA',
+        'scoreplayerA',
+        'playerB',
+        'scoreplayerB'
+      ]);
+      const pushnewgamestate = [newtmpgame, ...this.state.games];
+      this.setState({ games: pushnewgamestate });
+    } catch (error) {}
   };
 
   render() {
