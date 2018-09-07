@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import NavBar from './components/navbar';
+import { Route } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
+import _ from 'lodash';
+import NavBar from './components/navbar';
+import Home from './components/home';
 import Games from './components/games';
+import Players from './components/players';
+import Stats from './components/stats';
+import AddGameForm from './components/addgameform';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import _ from 'lodash';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 axios.interceptors.response.use(null, error => {
@@ -41,13 +46,13 @@ class App extends Component {
     }
   };
 
-  handleNewGame = async () => {
-    const newgame = {
-      playerA: 'zzz',
-      playerB: 'ffhhf',
-      scoreplayerA: 0,
-      scoreplayerB: 1
-    };
+  handleNewGame = async newgame => {
+    // const newgame = {
+    //   playerA: 'zzz',
+    //   playerB: 'ffhhf',
+    //   scoreplayerA: 0,
+    //   scoreplayerB: 1
+    // };
 
     try {
       const { data: game } = await axios.post(endPoint + 'games', newgame);
@@ -68,14 +73,38 @@ class App extends Component {
     return (
       <React.Fragment>
         <ToastContainer />
-        <NavBar
-          totalPlayers={this.state.players.length}
-          onNew={this.handleNewGame}
-          totalGames={this.state.games.length}
-        />
+        <NavBar />
         <main role="main" className="container">
           <div className="starter-template">
-            <Games onDelete={this.handleDelete} games={this.state.games} />
+            <Route path="/" exact render={props => <Home {...props} />} />
+            <Route
+              path="/games"
+              exact
+              render={props => (
+                <Games
+                  onDelete={this.handleDelete}
+                  games={this.state.games}
+                  {...props}
+                />
+              )}
+            />
+            <Route
+              path="/players"
+              exact
+              render={props => <Players {...props} />}
+            />
+            <Route path="/stats" exact render={props => <Stats {...props} />} />
+            <Route
+              path="/addgame"
+              exact
+              render={props => (
+                <AddGameForm
+                  players={this.state.players}
+                  onNew={this.handleNewGame}
+                  {...props}
+                />
+              )}
+            />
           </div>
         </main>
       </React.Fragment>
