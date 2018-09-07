@@ -1,28 +1,54 @@
-import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
+import React from 'react';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink
+} from 'reactstrap';
 
-let defaultsytle = { fontSize: 15 };
-class NavBar extends Component {
+class NavBar extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false
+    };
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
   render() {
     return (
-      <nav className="navbar navbar-expand-md navbar-dark bg-dark navbar-fixed-top">
-        <a className="navbar-brand" href="">
-          r21Billard
-        </a>
-        <span style={defaultsytle} className="badge badge-pill badge-light m-2">
-          Games: {this.props.totalGames}
-        </span>
-        <span style={defaultsytle} className="badge badge-pill badge-light m-2">
-          Players: {this.props.totalPlayers}
-        </span>
-        <button
-          style={defaultsytle}
-          onClick={this.props.onNew}
-          className="btn btn-primary btn-sm m-2"
-        >
-          <strong>Add</strong>
-        </button>
-      </nav>
+      <div>
+        <Navbar className="navbar navbar-expand-md navbar-dark bg-dark navbar-fixed-top">
+          <NavbarBrand href="/">r21Billard</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} className="mr-2" />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="#">Games</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="#">Players</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="#">Stats</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink onClick={this.props.onNew} href="#">
+                  Add
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </div>
     );
   }
 }
