@@ -18,7 +18,8 @@ axios.interceptors.response.use(null, error => {
   return Promise.reject(error);
 });
 
-const endPoint = 'http://localhost:3001/api/v1/';
+const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
+// const endPoint = 'http://localhost:3001/api/v1/';
 
 class App extends Component {
   state = {
