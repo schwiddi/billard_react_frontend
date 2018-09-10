@@ -8,7 +8,7 @@ class Game extends Component {
     return (
       <tr onClick={() => this.props.onDelete(this.props.game.id)}>
         <td>
-          <p className="text-right">{this.props.game.id}</p>
+          <p className="text-left">{this.props.game.id}</p>
         </td>
         <td>
           <p className="text-right">{this.props.game.playerA}</p>

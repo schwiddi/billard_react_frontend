@@ -12,16 +12,16 @@ class Games extends Component {
           <thead>
             <tr>
               <th scope="col">
-                <p className="text-right">#</p>
+                <p className="text-left">#</p>
               </th>
               <th scope="col">
-                <p className="text-right">Player</p>
+                <p className="text-right">Player A</p>
               </th>
               <th scope="col" colSpan="2">
                 <p className="text-center">Score</p>
               </th>
               <th scope="col">
-                <p className="text-left">Player</p>
+                <p className="text-left">Player B</p>
               </th>
             </tr>
           </thead>
