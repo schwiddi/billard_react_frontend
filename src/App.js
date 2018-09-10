@@ -15,7 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 // axios.interceptors.response.use(null, error => {
 //   toast.error('Error!!!', {
-//     position: 'top-right',
+//     position: 'bottom-right',
 //     autoClose: false,
 //     closeOnClick: true
 //   });
@@ -127,7 +127,7 @@ class App extends Component {
       const pushnewgamestate = [newtmpgame, ...this.state.games];
       this.setState({ games: pushnewgamestate });
       toast.success('Saved Game', {
-        position: 'top-right',
+        position: 'bottom-right',
         autoClose: true,
         hideProgressBar: false,
         closeOnClick: true,
@@ -135,7 +135,7 @@ class App extends Component {
       });
     } catch (ex) {
       toast.error('Game not saved', {
-        position: 'top-right',
+        position: 'bottom-right',
         autoClose: false,
         closeOnClick: true
       });
@@ -145,7 +145,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <ToastContainer position="top-right" newestOnTop rtl={false} />
+        <ToastContainer position="bottom-right" newestOnTop rtl={false} />
         <NavBar />
         <main role="main" className="container">
           <div className="starter-template">
