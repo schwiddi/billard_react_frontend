@@ -1,8 +1,31 @@
 import React, { Component } from 'react';
 
 class AddGameForm extends Component {
+  state = {
+    newgame: {
+      playerA: '',
+      scoreplayerA: '',
+      playerB: '',
+      scoreplayerB: ''
+    }
+  };
+
+  handleChange = ({ currentTarget: input }) => {
+    const newgame = { ...this.state.newgame };
+    newgame[input.name] = input.value;
+    this.setState({ newgame });
+  };
+
   handleSubmit = event => {
     event.preventDefault();
+    this.props.onNew(this.state.newgame);
+    const clearState = {
+      playerA: '',
+      scoreplayerA: '',
+      playerB: '',
+      scoreplayerB: ''
+    };
+    this.setState({ newgame: clearState });
   };
 
   render() {
@@ -15,11 +38,14 @@ class AddGameForm extends Component {
           <div className="form-group">
             <label htmlFor="playerA">Player A</label>
             <input
-              autoFocus
               id="playerA"
               type="text"
               className="form-control"
               list="data"
+              autoFocus
+              value={this.state.newgame.playerA}
+              onChange={this.handleChange}
+              name="playerA"
             />
             <datalist id="data">
               {players.map(item => (
@@ -29,15 +55,25 @@ class AddGameForm extends Component {
           </div>
           <div className="form-group">
             <label htmlFor="scoreplayerA">Score Player A</label>
-            <input id="scoreplayerA" type="number" className="form-control" />
+            <input
+              id="scoreplayerA"
+              value={this.state.newgame.scoreplayerA}
+              type="number"
+              className="form-control"
+              onChange={this.handleChange}
+              name="scoreplayerA"
+            />
           </div>
           <div className="form-group">
             <label htmlFor="playerB">Player B</label>
             <input
+              value={this.state.newgame.playerB}
               id="playerB"
               type="text"
               className="form-control"
               list="data"
+              onChange={this.handleChange}
+              name="playerB"
             />
             <datalist id="data">
               {players.map(item => (
@@ -47,7 +83,14 @@ class AddGameForm extends Component {
           </div>
           <div className="form-group">
             <label htmlFor="scoreplayerB">Score Player B</label>
-            <input id="scoreplayerB" type="number" className="form-control" />
+            <input
+              id="scoreplayerB"
+              value={this.state.newgame.scoreplayerB}
+              type="number"
+              className="form-control"
+              onChange={this.handleChange}
+              name="scoreplayerB"
+            />
           </div>
           <button className="btn btn-primary m-2">Add</button>
         </form>

@@ -13,10 +13,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-axios.interceptors.response.use(null, error => {
-  toast.error('Something went wrong....');
-  return Promise.reject(error);
-});
+// axios.interceptors.response.use(null, error => {
+//   toast.error('Error!!!', {
+//     position: 'top-right',
+//     autoClose: false,
+//     closeOnClick: true
+//   });
+//   return Promise.reject(error);
+// });
 
 const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
 // const endPoint = 'http://localhost:3001/api/v1/';
@@ -28,11 +32,50 @@ class App extends Component {
   };
 
   async componentDidMount() {
-    const { data: games } = await axios.get(endPoint + 'games');
-    this.setState({ games });
+    try {
+      const { data: games } = await axios.get(endPoint + 'games');
+      if (games === 'Currently no Games in Database...') {
+        toast.info('There are no Games in the Database', {
+          position: 'top-right',
+          autoClose: false,
+          closeOnClick: true
+        });
+      } else {
+        this.setState({ games });
+        toast.info('Games loaded from Backend', {
+          position: 'top-right',
+          autoClose: true,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true
+        });
+      }
 
-    const { data: players } = await axios.get(endPoint + 'players');
-    this.setState({ players });
+      const { data: players } = await axios.get(endPoint + 'players');
+      if (players === 'Currently no Players in Database...') {
+        toast.info('There are no Players in the Database', {
+          position: 'top-right',
+          autoClose: false,
+          closeOnClick: true
+        });
+      } else {
+        this.setState({ players });
+        toast.info('Players loaded from Backend', {
+          position: 'top-right',
+          autoClose: true,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true
+        });
+      }
+    } catch (ex) {
+      console.log(ex);
+      toast.error('Having problems getting Data from the Backend', {
+        position: 'top-right',
+        autoClose: false,
+        closeOnClick: true
+      });
+    }
   }
 
   handleDelete = async id => {
@@ -42,19 +85,24 @@ class App extends Component {
 
     try {
       await axios.delete(endPoint + 'games/' + id);
+      toast.success('Game was deleted from the Database', {
+        position: 'top-right',
+        autoClose: true,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true
+      });
     } catch (ex) {
       this.setState({ games: originalGames });
+      toast.error('Game could not be deleted', {
+        position: 'top-right',
+        autoClose: false,
+        closeOnClick: true
+      });
     }
   };
 
   handleNewGame = async newgame => {
-    // const newgame = {
-    //   playerA: 'zzz',
-    //   playerB: 'ffhhf',
-    //   scoreplayerA: 0,
-    //   scoreplayerB: 1
-    // };
-
     try {
       const { data: game } = await axios.post(endPoint + 'games', newgame);
       const tmpgame = game[0];
@@ -67,13 +115,26 @@ class App extends Component {
       ]);
       const pushnewgamestate = [newtmpgame, ...this.state.games];
       this.setState({ games: pushnewgamestate });
-    } catch (ex) {}
+      toast.success('New Game has been added to the Database', {
+        position: 'top-right',
+        autoClose: true,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true
+      });
+    } catch (ex) {
+      toast.error('Could not store the Game in the Database', {
+        position: 'top-right',
+        autoClose: false,
+        closeOnClick: true
+      });
+    }
   };
 
   render() {
     return (
       <React.Fragment>
-        <ToastContainer />
+        <ToastContainer position="top-right" newestOnTop rtl={false} />
         <NavBar />
         <main role="main" className="container">
           <div className="starter-template">
@@ -101,6 +162,7 @@ class App extends Component {
               render={props => (
                 <AddGameForm
                   players={this.state.players}
+                  games={this.state.games}
                   onNew={this.handleNewGame}
                   {...props}
                 />
