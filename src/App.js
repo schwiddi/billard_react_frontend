@@ -29,21 +29,23 @@ class App extends Component {
   state = {
     games: [],
     players: []
+    // scores: []
   };
 
   async componentDidMount() {
     try {
       const { data: games } = await axios.get(endPoint + 'games');
       if (games === 'Currently no Games in Database...') {
-        toast.info('There are no Games in the Database', {
-          position: 'top-right',
+        toast.info('No Games', {
+          position: 'bottom-right',
           autoClose: false,
           closeOnClick: true
         });
       } else {
         this.setState({ games });
-        toast.info('Games loaded from Backend', {
-          position: 'top-right',
+
+        toast.info('Games loaded', {
+          position: 'bottom-right',
           autoClose: true,
           hideProgressBar: false,
           closeOnClick: true,
@@ -53,25 +55,34 @@ class App extends Component {
 
       const { data: players } = await axios.get(endPoint + 'players');
       if (players === 'Currently no Players in Database...') {
-        toast.info('There are no Players in the Database', {
-          position: 'top-right',
+        toast.info('No Players', {
+          position: 'bottom-right',
           autoClose: false,
           closeOnClick: true
         });
       } else {
         this.setState({ players });
-        toast.info('Players loaded from Backend', {
-          position: 'top-right',
+        toast.info('Players loaded', {
+          position: 'bottom-right',
           autoClose: true,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true
         });
       }
+
+      // build scores
+      // let playerswithscores = {};
+      // first make object with all players in it
+
+      // then calculate for every player in the array the wins, losses and total games
+      // win
+      // loss
+      // total
     } catch (ex) {
       console.log(ex);
-      toast.error('Having problems getting Data from the Backend', {
-        position: 'top-right',
+      toast.error('Backend Error', {
+        position: 'bottom-right',
         autoClose: false,
         closeOnClick: true
       });
@@ -85,8 +96,8 @@ class App extends Component {
 
     try {
       await axios.delete(endPoint + 'games/' + id);
-      toast.success('Game was deleted from the Database', {
-        position: 'top-right',
+      toast.success('Game deleted', {
+        position: 'bottom-right',
         autoClose: true,
         hideProgressBar: false,
         closeOnClick: true,
@@ -94,8 +105,8 @@ class App extends Component {
       });
     } catch (ex) {
       this.setState({ games: originalGames });
-      toast.error('Game could not be deleted', {
-        position: 'top-right',
+      toast.error('Game not deleted', {
+        position: 'bottom-right',
         autoClose: false,
         closeOnClick: true
       });
@@ -115,7 +126,7 @@ class App extends Component {
       ]);
       const pushnewgamestate = [newtmpgame, ...this.state.games];
       this.setState({ games: pushnewgamestate });
-      toast.success('New Game has been added to the Database', {
+      toast.success('Saved Game', {
         position: 'top-right',
         autoClose: true,
         hideProgressBar: false,
@@ -123,7 +134,7 @@ class App extends Component {
         pauseOnHover: true
       });
     } catch (ex) {
-      toast.error('Could not store the Game in the Database', {
+      toast.error('Game not saved', {
         position: 'top-right',
         autoClose: false,
         closeOnClick: true
@@ -153,7 +164,13 @@ class App extends Component {
             <Route
               path="/players"
               exact
-              render={props => <Players {...props} />}
+              render={props => (
+                <Players
+                  players={this.state.players}
+                  games={this.state.games}
+                  {...props}
+                />
+              )}
             />
             <Route path="/stats" exact render={props => <Stats {...props} />} />
             <Route
@@ -162,7 +179,6 @@ class App extends Component {
               render={props => (
                 <AddGameForm
                   players={this.state.players}
-                  games={this.state.games}
                   onNew={this.handleNewGame}
                   {...props}
                 />
