@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
 class AddGameForm extends Component {
   state = {
@@ -26,6 +27,7 @@ class AddGameForm extends Component {
       scoreplayerB: ''
     };
     this.setState({ newgame: clearState });
+    this.props.history.push('/games');
   };
 
   render() {
@@ -92,13 +94,13 @@ class AddGameForm extends Component {
               name="scoreplayerB"
             />
           </div>
-          <button className="btn btn-primary m-2">Add</button>
+          <button className="btn btn-primary m-2">Save</button>
         </form>
       </div>
     );
   }
 }
 
-export default AddGameForm;
+export default withRouter(AddGameForm);
 
 /* <div onClick={this.props.onNew}>test</div> */
