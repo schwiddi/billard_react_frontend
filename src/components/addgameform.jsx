@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { Button } from 'reactstrap';
 
 class AddGameForm extends Component {
   state = {
@@ -94,7 +95,9 @@ class AddGameForm extends Component {
               name="scoreplayerB"
             />
           </div>
-          <button className="btn btn-primary m-2">Save</button>
+          <Button color="primary" size="lg">
+            Save
+          </Button>
         </form>
       </div>
     );
