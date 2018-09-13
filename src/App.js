@@ -29,7 +29,6 @@ class App extends Component {
   state = {
     games: [],
     players: []
-    // scores: []
   };
 
   async componentDidMount() {
@@ -70,15 +69,6 @@ class App extends Component {
           pauseOnHover: true
         });
       }
-
-      // build scores
-      // let playerswithscores = {};
-      // first make object with all players in it
-
-      // then calculate for every player in the array the wins, losses and total games
-      // win
-      // loss
-      // total
     } catch (ex) {
       console.log(ex);
       toast.error('Backend Error', {
@@ -115,8 +105,10 @@ class App extends Component {
 
   handleNewGame = async newgame => {
     try {
+      // call backend with new game
       const { data: game } = await axios.post(endPoint + 'games', newgame);
       const tmpgame = game[0];
+      // then pick only needed info
       const newtmpgame = _.pick(tmpgame, [
         'id',
         'playerA',
@@ -124,6 +116,7 @@ class App extends Component {
         'playerB',
         'scoreplayerB'
       ]);
+      // and then push the new games list to state
       const pushnewgamestate = [newtmpgame, ...this.state.games];
       this.setState({ games: pushnewgamestate });
       toast.success('Saved Game', {
@@ -133,6 +126,10 @@ class App extends Component {
         closeOnClick: true,
         pauseOnHover: true
       });
+
+      // we need to update the players also
+      const { data: players } = await axios.get(endPoint + 'players');
+      this.setState({ players });
     } catch (ex) {
       toast.error('Game not saved', {
         position: 'bottom-right',
