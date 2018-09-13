@@ -105,5 +105,3 @@ class AddGameForm extends Component {
 }
 
 export default withRouter(AddGameForm);
-
-/* <div onClick={this.props.onNew}>test</div> */
