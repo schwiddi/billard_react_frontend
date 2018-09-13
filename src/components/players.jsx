@@ -17,11 +17,23 @@ class Players extends Component {
               <th scope="col">
                 <p className="text-left">Name</p>
               </th>
+              <th scope="col">
+                <p className="text-center">Total</p>
+              </th>
+              <th scope="col">
+                <p className="text-center">Wins</p>
+              </th>
+              <th scope="col">
+                <p className="text-center">Losses</p>
+              </th>
+              <th scope="col">
+                <p className="text-center">Ratio in %</p>
+              </th>
             </tr>
           </thead>
           <tbody>
             {players.map(player => (
-              <Player key={player.id} player={player} />
+              <Player key={player.id} player={player}/>
             ))}
           </tbody>
         </table>

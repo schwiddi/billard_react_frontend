@@ -11,6 +11,18 @@ class Player extends Component {
         <td>
           <p className="text-left">{this.props.player.name}</p>
         </td>
+        <td>
+          <p className="text-center">{this.props.player.games_total}</p>
+        </td>
+        <td>
+          <p className="text-center">{this.props.player.games_won}</p>
+        </td>
+        <td>
+          <p className="text-center">{this.props.player.games_lost}</p>
+        </td>
+        <td>
+          <p className="text-center">{this.props.player.games_win_lost}</p>
+        </td>
       </tr>
     );
   }

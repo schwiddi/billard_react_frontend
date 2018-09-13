@@ -22,8 +22,8 @@ import 'react-toastify/dist/ReactToastify.css';
 //   return Promise.reject(error);
 // });
 
-// const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
-const endPoint = 'http://localhost:3001/api/v1/';
+const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
+// const endPoint = 'http://localhost:3001/api/v1/';
 
 class App extends Component {
   state = {
