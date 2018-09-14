@@ -21,7 +21,7 @@ import 'react-toastify/dist/ReactToastify.css';
 //   return Promise.reject(error);
 // });
 
-cosnole.log(process.env);
+console.log(process.env);
 
 const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
 // const endPoint = 'http://localhost:3001/api/v1/';
