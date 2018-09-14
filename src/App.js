@@ -93,6 +93,9 @@ class App extends Component {
         closeOnClick: true,
         pauseOnHover: true
       });
+      // we need to update the players also
+      const { data: players } = await axios.get(endPoint + 'players');
+      this.setState({ players });
     } catch (ex) {
       this.setState({ games: originalGames });
       toast.error('Game not deleted', {
