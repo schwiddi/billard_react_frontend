@@ -7,7 +7,6 @@ import NavBar from './components/navbar';
 import Home from './components/home';
 import Games from './components/games';
 import Players from './components/players';
-import Stats from './components/stats';
 import AddGameForm from './components/addgameform';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
@@ -143,23 +142,28 @@ class App extends Component {
   };
 
   render() {
+    let mt = { marginTop: 10 };
     return (
       <React.Fragment>
         <ToastContainer position="bottom-right" newestOnTop rtl={false} />
         <NavBar />
         <main role="main" className="container">
-          <div className="starter-template">
-            <Route path="/" exact render={props => <Home {...props} />} />
+          <div style={mt} className="starter-template">
             <Route
-              path="/games"
+              path="/"
               exact
               render={props => (
-                <Games
-                  onDelete={this.handleDelete}
+                <Home
+                  players={this.state.players}
                   games={this.state.games}
                   {...props}
                 />
               )}
+            />
+            <Route
+              path="/games"
+              exact
+              render={props => <Games games={this.state.games} {...props} />}
             />
             <Route
               path="/players"
@@ -172,7 +176,6 @@ class App extends Component {
                 />
               )}
             />
-            <Route path="/stats" exact render={props => <Stats {...props} />} />
             <Route
               path="/addgame"
               exact

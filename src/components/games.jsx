@@ -4,7 +4,7 @@ import Game from './game';
 
 class Games extends Component {
   render() {
-    const { onDelete, games } = this.props;
+    const { games } = this.props;
 
     return (
       <React.Fragment>
@@ -27,7 +27,7 @@ class Games extends Component {
           </thead>
           <tbody>
             {games.map(game => (
-              <Game key={game.id} onDelete={onDelete} game={game} />
+              <Game key={game.id} game={game} />
             ))}
           </tbody>
         </table>

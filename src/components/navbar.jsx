@@ -35,6 +35,11 @@ class NavBar extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
+                <NavLink tag={Link} to="/">
+                  Home
+                </NavLink>
+              </NavItem>
+              <NavItem>
                 <NavLink tag={Link} to="/games">
                   Games
                 </NavLink>
@@ -42,16 +47,6 @@ class NavBar extends React.Component {
               <NavItem>
                 <NavLink tag={Link} to="/players">
                   Players
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={Link} to="/stats">
-                  Stats
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink tag={Link} to="/addgame">
-                  Add
                 </NavLink>
               </NavItem>
             </Nav>
