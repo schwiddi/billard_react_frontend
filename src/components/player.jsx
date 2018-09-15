@@ -21,7 +21,7 @@ class Player extends Component {
           <p className="text-center">{this.props.player.games_lost}</p>
         </td>
         <td>
-          <p className="text-center">{this.props.player.games_win_lost}</p>
+          <p className="text-center">{this.props.player.games_win_lost}%</p>
         </td>
       </tr>
     );

@@ -27,7 +27,7 @@ class Players extends Component {
                 <p className="text-center">Losses</p>
               </th>
               <th scope="col">
-                <p className="text-center">Ratio in %</p>
+                <p className="text-center">Win %</p>
               </th>
             </tr>
           </thead>
