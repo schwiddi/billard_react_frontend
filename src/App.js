@@ -30,7 +30,8 @@ class App extends Component {
   state = {
     games: [],
     players: [],
-    playernames: []
+    playernames: [],
+    mostgames: []
   };
 
   async componentDidMount() {
@@ -71,6 +72,17 @@ class App extends Component {
           return a.toLowerCase().localeCompare(b.toLowerCase());
         });
         this.setState({ playernames });
+
+        function compare(a, b) {
+          if (a.games_total < b.games_total) return 1;
+          if (a.games_total > b.games_total) return -1;
+          return 0;
+        }
+
+        let mostgamestmp = players;
+        mostgamestmp.sort(compare);
+        let mostgames = mostgamestmp[Object.keys(mostgamestmp)[0]];
+        this.setState({ mostgames });
 
         toast.info('Players loaded', {
           position: 'bottom-right',
@@ -172,6 +184,8 @@ class App extends Component {
                 <Home
                   players={this.state.players}
                   games={this.state.games}
+                  mostgamer={this.state.mostgames.name}
+                  mostgamercount={this.state.mostgames.games_total}
                   {...props}
                 />
               )}

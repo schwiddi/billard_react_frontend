@@ -3,14 +3,18 @@ import { Card, CardTitle, CardBody, CardSubtitle } from 'reactstrap';
 
 export default class TotalPlayersCard extends Component {
   render() {
-    const totalplayeerscount = this.props.players.length;
     return (
-      <Card>
-        <CardBody>
-          <CardTitle>{totalplayeerscount}</CardTitle>
-          <CardSubtitle>different Players...</CardSubtitle>
-        </CardBody>
-      </Card>
+      <React.Fragment>
+        {this.props &&
+          this.props.players.length !== 0 && (
+            <Card>
+              <CardBody>
+                <CardTitle>{this.props.players.length}</CardTitle>
+                <CardSubtitle>different Players...</CardSubtitle>
+              </CardBody>
+            </Card>
+          )}
+      </React.Fragment>
     );
   }
 }

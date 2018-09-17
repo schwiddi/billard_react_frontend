@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, CardBody } from 'reactstrap';
+import { Card, CardTitle, CardBody, CardSubtitle } from 'reactstrap';
 
 export default class MostGamesCard extends Component {
-  // static getDerivedStateFromProps = () => {
-  // let players = this.props.players;
-  // function compare(a, b) {
-  //   if (a.games_total < b.games_total) return 1;
-  //   if (a.games_total > b.games_total) return -1;
-  //   return 0;
-  // }
-  // players.sort(compare);
-  // let mostgames = players[Object.keys(players)[0]];
-  // this.setState({ mostgames });
-  // };
-
   render() {
     return (
-      <Card>
-        <CardBody>
-          <CardTitle>{}</CardTitle>
-        </CardBody>
-      </Card>
+      <React.Fragment>
+        {this.props &&
+          this.props.mostgamer &&
+          this.props.mostgamercount && (
+            <Card>
+              <CardBody>
+                <CardTitle>{this.props.mostgamer}</CardTitle>
+                <CardSubtitle>
+                  has the most games played on the table with{' '}
+                  {this.props.mostgamercount}
+                </CardSubtitle>
+              </CardBody>
+            </Card>
+          )}
+      </React.Fragment>
     );
   }
 }
