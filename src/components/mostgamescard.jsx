@@ -12,8 +12,7 @@ export default class MostGamesCard extends Component {
               <CardBody>
                 <CardTitle>{this.props.mostgamer}</CardTitle>
                 <CardSubtitle>
-                  has the most games played on the table with{' '}
-                  {this.props.mostgamercount}
+                  has the most games with {this.props.mostgamercount}
                 </CardSubtitle>
               </CardBody>
             </Card>
