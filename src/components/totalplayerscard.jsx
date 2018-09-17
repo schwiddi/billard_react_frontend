@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, CardBody } from 'reactstrap';
+import { Card, CardTitle, CardBody, CardSubtitle } from 'reactstrap';
 
 export default class TotalPlayersCard extends Component {
   render() {
@@ -7,7 +7,8 @@ export default class TotalPlayersCard extends Component {
     return (
       <Card>
         <CardBody>
-          <CardTitle>Players: {totalplayeerscount}</CardTitle>
+          <CardTitle>{totalplayeerscount}</CardTitle>
+          <CardSubtitle>different Players...</CardSubtitle>
         </CardBody>
       </Card>
     );
