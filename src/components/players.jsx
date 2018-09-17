@@ -8,6 +8,8 @@ class Players extends Component {
 
     return (
       <React.Fragment>
+        <h2>Players with more then 20 Games</h2>
+        <p>only these players are getting ranked...</p>
         <table className="table table-hover">
           <thead>
             <tr>
@@ -37,6 +39,8 @@ class Players extends Component {
             ))}
           </tbody>
         </table>
+        <h2>Players with less</h2>
+        <p>these have not enough games to get to the ranking...</p>
       </React.Fragment>
     );
   }
