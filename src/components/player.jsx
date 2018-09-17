@@ -6,9 +6,6 @@ class Player extends Component {
     return (
       <tr>
         <td>
-          <p className="text-left">{this.props.player.id}</p>
-        </td>
-        <td>
           <p className="text-left">{this.props.player.name}</p>
         </td>
         <td>

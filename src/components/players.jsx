@@ -12,9 +12,6 @@ class Players extends Component {
           <thead>
             <tr>
               <th scope="col">
-                <p className="text-left">#</p>
-              </th>
-              <th scope="col">
                 <p className="text-left">Name</p>
               </th>
               <th scope="col">
