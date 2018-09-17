@@ -31,7 +31,8 @@ class App extends Component {
     games: [],
     players: [],
     playernames: [],
-    mostgames: []
+    mostgames: [],
+    bestplayer: []
   };
 
   async componentDidMount() {
@@ -73,16 +74,25 @@ class App extends Component {
         });
         this.setState({ playernames });
 
-        function compare(a, b) {
+        function comparetotal(a, b) {
           if (a.games_total < b.games_total) return 1;
           if (a.games_total > b.games_total) return -1;
           return 0;
         }
-
         let mostgamestmp = players;
-        mostgamestmp.sort(compare);
+        mostgamestmp.sort(comparetotal);
         let mostgames = mostgamestmp[Object.keys(mostgamestmp)[0]];
         this.setState({ mostgames });
+
+        function comparewinloss(a, b) {
+          if (a.games_win_lost < b.games_win_lost) return 1;
+          if (a.games_win_lost > b.games_win_lost) return -1;
+          return 0;
+        }
+        let bestplayertmp = players;
+        bestplayertmp.sort(comparewinloss);
+        let bestplayer = bestplayertmp[Object.keys(bestplayertmp)[0]];
+        this.setState({ bestplayer });
 
         toast.info('Players loaded', {
           position: 'bottom-right',
@@ -186,6 +196,8 @@ class App extends Component {
                   games={this.state.games}
                   mostgamer={this.state.mostgames.name}
                   mostgamercount={this.state.mostgames.games_total}
+                  bestplayer={this.state.bestplayer.name}
+                  bestplayerratio={this.state.bestplayer.games_win_lost}
                   {...props}
                 />
               )}

@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { Card, CardTitle, CardBody, CardSubtitle } from 'reactstrap';
 
-export default class MostGamesCard extends Component {
+export default class BestPlayerCard extends Component {
   render() {
     return (
       <React.Fragment>
         {this.props &&
-          this.props.mostgamer &&
-          this.props.mostgamercount && (
+          this.props.bestplayer &&
+          this.props.bestplayerratio && (
             <Card>
               <CardBody>
-                <CardTitle>{this.props.mostgamer}</CardTitle>
+                <CardTitle>{this.props.bestplayer}</CardTitle>
                 <CardSubtitle>
-                  has the most games with {this.props.mostgamercount}
-                  ...
+                  has the best Ratio with{' '}
+                  {parseFloat(this.props.bestplayerratio).toFixed(2)}%
                 </CardSubtitle>
               </CardBody>
             </Card>

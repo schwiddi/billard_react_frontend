@@ -10,7 +10,7 @@ export default class TotalGamesCard extends Component {
             <Card>
               <CardBody>
                 <CardTitle>{this.props.games.length}</CardTitle>
-                <CardSubtitle>Games stored in the Database...</CardSubtitle>
+                <CardSubtitle>Games had been played...</CardSubtitle>
               </CardBody>
             </Card>
           )}
