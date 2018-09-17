@@ -32,7 +32,7 @@ class AddGameForm extends Component {
   };
 
   render() {
-    const { players } = this.props;
+    const { playernames } = this.props;
 
     return (
       <div>
@@ -51,8 +51,8 @@ class AddGameForm extends Component {
               name="playerA"
             />
             <datalist id="data">
-              {players.map(item => (
-                <option key={item.id} value={item.name} />
+              {playernames.map((item, index) => (
+                <option key={index} value={item} />
               ))}
             </datalist>
           </div>
@@ -79,8 +79,8 @@ class AddGameForm extends Component {
               name="playerB"
             />
             <datalist id="data">
-              {players.map(item => (
-                <option key={item.id} value={item.name} />
+              {playernames.map((item, index) => (
+                <option key={index} value={item} />
               ))}
             </datalist>
           </div>

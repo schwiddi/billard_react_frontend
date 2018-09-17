@@ -29,7 +29,8 @@ const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
 class App extends Component {
   state = {
     games: [],
-    players: []
+    players: [],
+    playernames: []
   };
 
   async componentDidMount() {
@@ -62,6 +63,15 @@ class App extends Component {
         });
       } else {
         this.setState({ players });
+
+        let playernames = this.state.players.map(function(el) {
+          return el.name;
+        });
+        playernames.sort(function(a, b) {
+          return a.toLowerCase().localeCompare(b.toLowerCase());
+        });
+        this.setState({ playernames });
+
         toast.info('Players loaded', {
           position: 'bottom-right',
           autoClose: true,
@@ -94,9 +104,6 @@ class App extends Component {
         closeOnClick: true,
         pauseOnHover: true
       });
-      // we need to update the players also
-      const { data: players } = await axios.get(endPoint + 'players');
-      this.setState({ players });
     } catch (ex) {
       this.setState({ games: originalGames });
       toast.error('Game not deleted', {
@@ -134,6 +141,13 @@ class App extends Component {
       // we need to update the players also
       const { data: players } = await axios.get(endPoint + 'players');
       this.setState({ players });
+      let playernames = this.state.players.map(function(el) {
+        return el.name;
+      });
+      playernames.sort(function(a, b) {
+        return a.toLowerCase().localeCompare(b.toLowerCase());
+      });
+      this.setState({ playernames });
     } catch (ex) {
       toast.error('Game not saved', {
         position: 'bottom-right',
@@ -183,7 +197,7 @@ class App extends Component {
               exact
               render={props => (
                 <AddGameForm
-                  players={this.state.players}
+                  playernames={this.state.playernames}
                   onNew={this.handleNewGame}
                   {...props}
                 />
