@@ -74,16 +74,6 @@ class App extends Component {
         });
         this.setState({ playernames });
 
-        function comparetotal(a, b) {
-          if (a.games_total < b.games_total) return 1;
-          if (a.games_total > b.games_total) return -1;
-          return 0;
-        }
-        let mostgamestmp = players;
-        mostgamestmp.sort(comparetotal);
-        let mostgames = mostgamestmp[Object.keys(mostgamestmp)[0]];
-        this.setState({ mostgames });
-
         function comparewinloss(a, b) {
           if (a.games_win_lost < b.games_win_lost) return 1;
           if (a.games_win_lost > b.games_win_lost) return -1;
@@ -93,6 +83,16 @@ class App extends Component {
         bestplayertmp.sort(comparewinloss);
         let bestplayer = bestplayertmp[Object.keys(bestplayertmp)[0]];
         this.setState({ bestplayer });
+
+        function comparetotal(a, b) {
+          if (a.games_total < b.games_total) return 1;
+          if (a.games_total > b.games_total) return -1;
+          return 0;
+        }
+        let mostgamestmp = players;
+        mostgamestmp.sort(comparetotal);
+        let mostgames = mostgamestmp[Object.keys(mostgamestmp)[0]];
+        this.setState({ mostgames });
 
         toast.info('Players loaded', {
           position: 'bottom-right',

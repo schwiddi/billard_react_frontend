@@ -14,16 +14,16 @@ class Home extends Component {
       <div>
         <Jumbo />
         <CardColumns>
-          <TotalGamesCard games={this.props.games} />
-          <TotalPlayersCard players={this.props.players} />
-          <MostGamesCard
-            mostgamer={this.props.mostgamer}
-            mostgamercount={this.props.mostgamercount}
-          />
           <BestPlayerCard
             bestplayer={this.props.bestplayer}
             bestplayerratio={this.props.bestplayerratio}
           />
+          <MostGamesCard
+            mostgamer={this.props.mostgamer}
+            mostgamercount={this.props.mostgamercount}
+          />
+          <TotalGamesCard games={this.props.games} />
+          <TotalPlayersCard players={this.props.players} />
         </CardColumns>
       </div>
     );
