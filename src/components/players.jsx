@@ -12,6 +12,9 @@ class Players extends Component {
           <thead>
             <tr>
               <th scope="col">
+                <p className="text-left">Rank</p>
+              </th>
+              <th scope="col">
                 <p className="text-left">Name</p>
               </th>
               <th scope="col">
@@ -29,8 +32,8 @@ class Players extends Component {
             </tr>
           </thead>
           <tbody>
-            {players.map(player => (
-              <Player key={player.id} player={player} />
+            {players.map((player, index) => (
+              <Player key={player.id} player={player} index={index} />
             ))}
           </tbody>
         </table>

@@ -3,8 +3,13 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 class Player extends Component {
   render() {
+    let index = Number(this.props.index);
+    const rank = index + 1;
     return (
       <tr>
+        <td>
+          <p className="text-left">{rank}</p>
+        </td>
         <td>
           <p className="text-left">{this.props.player.name}</p>
         </td>
