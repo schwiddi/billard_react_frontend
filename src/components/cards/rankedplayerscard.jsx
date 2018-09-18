@@ -10,7 +10,9 @@ export default class RankedPlayersCard extends Component {
             <Card>
               <CardBody>
                 <CardTitle>{this.props.rankedplayerscount} Players</CardTitle>
-                <CardSubtitle>had made it to the ranking...</CardSubtitle>
+                <CardSubtitle>
+                  had made it to the ranking so far...
+                </CardSubtitle>
               </CardBody>
             </Card>
           )}
