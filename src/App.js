@@ -6,7 +6,7 @@ import _ from 'lodash';
 import NavBar from './components/navbar';
 import Home from './components/home';
 import Games from './components/games';
-import Players from './components/players';
+import Ranking from './components/ranking';
 import AddGameForm from './components/addgameform';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
@@ -248,10 +248,10 @@ class App extends Component {
               render={props => <Games games={this.state.games} {...props} />}
             />
             <Route
-              path="/players"
+              path="/ranking"
               exact
               render={props => (
-                <Players
+                <Ranking
                   playersranked={this.state.playersranked}
                   playersunranked={this.state.playersunranked}
                   {...props}

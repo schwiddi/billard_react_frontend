@@ -3,14 +3,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import PlayerRanked from './playerranked';
 import PlayerUnranked from './playerunranked';
 
-class Players extends Component {
+class Ranking extends Component {
   render() {
     const { playersunranked, playersranked } = this.props;
 
     return (
       <React.Fragment>
-        <h2>Ranking</h2>
-        <p>only players with enouth games will get into the ranking...</p>
+        <h2>ranked...</h2>
+        <p>wanna land here... play more...</p>
         <table className="table table-hover">
           <thead>
             <tr>
@@ -40,8 +40,7 @@ class Players extends Component {
             ))}
           </tbody>
         </table>
-        <h2>Other Players</h2>
-        <p>these have not enough games to get into ranking...</p>
+        <h2>others...</h2>
         <table className="table table-hover">
           <thead>
             <tr>
@@ -73,4 +72,4 @@ class Players extends Component {
   }
 }
 
-export default Players;
+export default Ranking;

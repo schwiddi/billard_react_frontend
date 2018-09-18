@@ -23,7 +23,7 @@ class Home extends Component {
             mostgamer={this.props.mostgamer}
             mostgamercount={this.props.mostgamercount}
           />
-          <TotalGamesCard games={this.props.gamescount} />
+          <TotalGamesCard gamescount={this.props.gamescount} />
           <TotalPlayersCard players={this.props.players} />
           <RankedPlayersCard
             rankedplayerscount={this.props.rankedplayerscount}

@@ -36,17 +36,17 @@ class NavBar extends React.Component {
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink tag={Link} to="/">
-                  Home
+                  home
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={Link} to="/games">
-                  Games
+                  games
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} to="/players">
-                  Players
+                <NavLink tag={Link} to="/ranking">
+                  ranking
                 </NavLink>
               </NavItem>
             </Nav>
