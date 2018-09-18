@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { CardColumns } from 'reactstrap';
-import TotalGamesCard from './totalgamescard';
-import TotalPlayersCard from './totalplayerscard';
-import MostGamesCard from './mostgamescard';
-import BestPlayerCard from './bestplayercard';
+import TotalGamesCard from './cards/totalgamescard';
+import TotalPlayersCard from './cards/totalplayerscard';
+import MostGamesCard from './cards/mostgamescard';
+import BestPlayerCard from './cards/bestplayercard';
+import RankedPlayersCard from './cards/rankedplayerscard';
 import Jumbo from './jumbotron';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -24,6 +25,9 @@ class Home extends Component {
           />
           <TotalGamesCard games={this.props.games} />
           <TotalPlayersCard players={this.props.players} />
+          <RankedPlayersCard
+            rankedplayerscount={this.props.rankedplayerscount}
+          />
         </CardColumns>
       </div>
     );

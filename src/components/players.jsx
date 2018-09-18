@@ -41,7 +41,7 @@ class Players extends Component {
           </tbody>
         </table>
         <h2>Other Players</h2>
-        <p>these have not enough games to get to the ranking...</p>
+        <p>these have not enough games to get into ranking...</p>
         <table className="table table-hover">
           <thead>
             <tr>
