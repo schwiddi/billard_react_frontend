@@ -23,14 +23,16 @@ import 'react-toastify/dist/ReactToastify.css';
 
 console.log(process.env);
 
-const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
-// const endPoint = 'http://localhost:3001/api/v1/';
+// const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
+const endPoint = 'http://localhost:3001/api/v1/';
 
 class App extends Component {
   state = {
     games: [],
     players: [],
     playernames: [],
+    playersranked: [],
+    playersunranked: [],
     mostgames: [],
     bestplayer: []
   };
@@ -73,13 +75,32 @@ class App extends Component {
           return a.toLowerCase().localeCompare(b.toLowerCase());
         });
         this.setState({ playernames });
+        const { data: playersranked } = await axios.get(
+          endPoint + 'playersranked'
+        );
+        if (playersranked === 'Currently no ranked Players in Database...') {
+          return null;
+        } else {
+          this.setState({ playersranked });
+        }
+
+        const { data: playersunranked } = await axios.get(
+          endPoint + 'playersunranked'
+        );
+        if (
+          playersunranked === 'Currently no unranked Players in Database...'
+        ) {
+          return null;
+        } else {
+          this.setState({ playersunranked });
+        }
 
         function comparewinloss(a, b) {
           if (a.games_win_lost < b.games_win_lost) return 1;
           if (a.games_win_lost > b.games_win_lost) return -1;
           return 0;
         }
-        let bestplayertmp = players;
+        let bestplayertmp = playersranked;
         bestplayertmp.sort(comparewinloss);
         let bestplayer = bestplayertmp[Object.keys(bestplayertmp)[0]];
         this.setState({ bestplayer });
@@ -170,6 +191,24 @@ class App extends Component {
         return a.toLowerCase().localeCompare(b.toLowerCase());
       });
       this.setState({ playernames });
+
+      const { data: playersranked } = await axios.get(
+        endPoint + 'playersranked'
+      );
+      if (playersranked === 'Currently no ranked Players in Database...') {
+        return null;
+      } else {
+        this.setState({ playersranked });
+      }
+
+      const { data: playersunranked } = await axios.get(
+        endPoint + 'playersunranked'
+      );
+      if (playersunranked === 'Currently no unranked Players in Database...') {
+        return null;
+      } else {
+        this.setState({ playersunranked });
+      }
     } catch (ex) {
       toast.error('Game not saved', {
         position: 'bottom-right',
@@ -212,8 +251,8 @@ class App extends Component {
               exact
               render={props => (
                 <Players
-                  players={this.state.players}
-                  games={this.state.games}
+                  playersranked={this.state.playersranked}
+                  playersunranked={this.state.playersunranked}
                   {...props}
                 />
               )}

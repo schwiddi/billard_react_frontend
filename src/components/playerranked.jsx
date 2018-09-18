@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 
-class Player extends Component {
+class PlayerRanked extends Component {
   render() {
     let index = Number(this.props.index);
     const rank = index + 1;
@@ -32,4 +32,4 @@ class Player extends Component {
   }
 }
 
-export default Player;
+export default PlayerRanked;
