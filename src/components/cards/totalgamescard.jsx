@@ -6,10 +6,10 @@ export default class TotalGamesCard extends Component {
     return (
       <React.Fragment>
         {this.props &&
-          this.props.games.length !== 0 && (
+          this.props.gamescount !== 0 && (
             <Card>
               <CardBody>
-                <CardTitle>{this.props.games.length}</CardTitle>
+                <CardTitle>{this.props.gamescount}</CardTitle>
                 <CardSubtitle>games had been played...</CardSubtitle>
               </CardBody>
             </Card>

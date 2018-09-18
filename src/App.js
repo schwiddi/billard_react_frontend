@@ -232,7 +232,7 @@ class App extends Component {
               render={props => (
                 <Home
                   players={this.state.players}
-                  games={this.state.games}
+                  gamescount={this.state.games.length}
                   mostgamer={this.state.mostgames.name}
                   mostgamercount={this.state.mostgames.games_total}
                   bestplayer={this.state.bestplayer.name}
