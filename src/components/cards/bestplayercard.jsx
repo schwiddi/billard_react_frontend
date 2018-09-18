@@ -12,7 +12,7 @@ export default class BestPlayerCard extends Component {
               <CardBody>
                 <CardTitle>{this.props.bestplayer}</CardTitle>
                 <CardSubtitle>
-                  has the best Ratio with{' '}
+                  has the best ratio with{' '}
                   {parseFloat(this.props.bestplayerratio).toFixed(2)}%
                 </CardSubtitle>
               </CardBody>
