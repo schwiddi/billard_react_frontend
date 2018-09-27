@@ -23,8 +23,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 console.log(process.env);
 
-const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
-// const endPoint = 'http://localhost:3001/api/v1/';
+// const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
+const endPoint = 'http://localhost:3001/api/v1/';
 
 class App extends Component {
   state = {
@@ -78,9 +78,7 @@ class App extends Component {
         const { data: playersranked } = await axios.get(
           endPoint + 'playersranked'
         );
-        if (playersranked === 'Currently no ranked Players in Database...') {
-          return null;
-        } else {
+        if (playersranked !== 'Currently no ranked Players in Database...') {
           this.setState({ playersranked });
         }
 
