@@ -7,7 +7,7 @@ import NavBar from './components/navbar';
 import Home from './components/home';
 import Games from './components/games';
 import Ranking from './components/ranking';
-import AddGameForm from './components/addgameform';
+import AddGameForm from './components/forms/addgameform';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
