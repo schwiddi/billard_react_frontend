@@ -20,7 +20,7 @@ class AddGameForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.onNew(this.state.newgame);
+    this.props.onNewGame(this.state.newgame);
     const clearState = {
       playerA: '',
       scoreplayerA: '',

@@ -35,20 +35,25 @@ class NavBar extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink tag={Link} to="/">
+                <NavLink onClick={this.toggle} tag={Link} to="/">
                   home
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} to="/games">
+                <NavLink onClick={this.toggle} tag={Link} to="/games">
                   games
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} to="/ranking">
+                <NavLink onClick={this.toggle} tag={Link} to="/ranking">
                   ranking
                 </NavLink>
               </NavItem>
+              {/* <NavItem>
+                <NavLink onClick={this.toggle} tag={Link} to="/register">
+                  register
+                </NavLink>
+              </NavItem> */}
             </Nav>
           </Collapse>
         </Navbar>

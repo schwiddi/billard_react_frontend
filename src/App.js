@@ -8,6 +8,7 @@ import Home from './components/home';
 import Games from './components/games';
 import Ranking from './components/ranking';
 import AddGameForm from './components/forms/addgameform';
+import RegisterForm from './components/forms/registerform';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -155,6 +156,28 @@ class App extends Component {
     }
   };
 
+  handleNewUser = async newuser => {
+    try {
+      // call backend with new user
+      await axios.post(endPoint + 'users', newuser);
+      toast.success('success', {
+        position: 'bottom-right',
+        autoClose: true,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true
+      });
+      return true;
+    } catch (ex) {
+      toast.error('error', {
+        position: 'bottom-right',
+        autoClose: false,
+        closeOnClick: true
+      });
+      return false;
+    }
+  };
+
   handleNewGame = async newgame => {
     try {
       // call backend with new game
@@ -262,9 +285,16 @@ class App extends Component {
               render={props => (
                 <AddGameForm
                   playernames={this.state.playernames}
-                  onNew={this.handleNewGame}
+                  onNewGame={this.handleNewGame}
                   {...props}
                 />
+              )}
+            />
+            <Route
+              path="/register"
+              exact
+              render={props => (
+                <RegisterForm onNewUser={this.handleNewUser} {...props} />
               )}
             />
           </div>
