@@ -7,7 +7,8 @@ import NavBar from './components/navbar';
 import Home from './components/home';
 import Games from './components/games';
 import Ranking from './components/ranking';
-import AddGameForm from './components/addgameform';
+import AddGameForm from './components/forms/addgameform';
+import RegisterForm from './components/forms/registerform';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -78,9 +79,7 @@ class App extends Component {
         const { data: playersranked } = await axios.get(
           endPoint + 'playersranked'
         );
-        if (playersranked === 'Currently no ranked Players in Database...') {
-          return null;
-        } else {
+        if (playersranked !== 'Currently no ranked Players in Database...') {
           this.setState({ playersranked });
         }
 
@@ -154,6 +153,28 @@ class App extends Component {
         autoClose: false,
         closeOnClick: true
       });
+    }
+  };
+
+  handleNewUser = async newuser => {
+    try {
+      // call backend with new user
+      await axios.post(endPoint + 'users', newuser);
+      toast.success('success', {
+        position: 'bottom-right',
+        autoClose: true,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true
+      });
+      return true;
+    } catch (ex) {
+      toast.error('error', {
+        position: 'bottom-right',
+        autoClose: false,
+        closeOnClick: true
+      });
+      return false;
     }
   };
 
@@ -264,9 +285,16 @@ class App extends Component {
               render={props => (
                 <AddGameForm
                   playernames={this.state.playernames}
-                  onNew={this.handleNewGame}
+                  onNewGame={this.handleNewGame}
                   {...props}
                 />
+              )}
+            />
+            <Route
+              path="/register"
+              exact
+              render={props => (
+                <RegisterForm onNewUser={this.handleNewUser} {...props} />
               )}
             />
           </div>
