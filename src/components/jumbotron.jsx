@@ -8,8 +8,8 @@ const Jumbo = props => {
         <Container fluid>
           <h1 className="display-3">r21Billard Games</h1>
           <p className="lead">
-            this is tha wolrds most amazing billard games storing app that ya've
-            ever seen in ya hole entire life... trust me.
+            this is tha world's most amazing billiard games storing app that
+            you've ever seen in ya hole entire life... trust me.
           </p>
         </Container>
       </Jumbotron>
