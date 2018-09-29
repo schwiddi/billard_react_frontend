@@ -49,14 +49,6 @@ class App extends Component {
         });
       } else {
         this.setState({ games });
-
-        toast.info('Games loaded', {
-          position: 'bottom-right',
-          autoClose: true,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true
-        });
       }
 
       const { data: players } = await axios.get(endPoint + 'players');
@@ -113,14 +105,6 @@ class App extends Component {
         mostgamestmp.sort(comparetotal);
         let mostgames = mostgamestmp[Object.keys(mostgamestmp)[0]];
         this.setState({ mostgames });
-
-        toast.info('Players loaded', {
-          position: 'bottom-right',
-          autoClose: true,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true
-        });
       }
     } catch (ex) {
       console.log(ex);
