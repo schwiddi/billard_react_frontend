@@ -9,7 +9,7 @@ class Games extends Component {
 
     return (
       <React.Fragment>
-        <Table responsive>
+        <Table hover responsive>
           <thead>
             <tr>
               <th className="text-left">id</th>

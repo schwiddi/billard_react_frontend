@@ -12,7 +12,7 @@ class Ranking extends Component {
       <React.Fragment>
         <h2>ranked...</h2>
         <p>wanna land here... play more...</p>
-        <Table responsive size="sm">
+        <Table hover responsive size="sm">
           <thead>
             <tr>
               <th scope="col">
@@ -39,7 +39,7 @@ class Ranking extends Component {
           </tbody>
         </Table>
         <h2>others...</h2>
-        <Table responsive size="sm">
+        <Table hover responsive size="sm">
           <thead>
             <tr>
               <th scope="col">

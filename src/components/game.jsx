@@ -7,7 +7,9 @@ class Game extends Component {
   render() {
     return (
       <tr>
-        <td className="text-left">{this.props.game.id}</td>
+        <th className="text-left" scope="row">
+          {this.props.game.id}
+        </th>
         <td className="text-right">{this.props.game.playerA}</td>
         <td className="text-center" colSpan="2">
           {this.formatScore(this.props.game.scoreplayerA)} :{' '}

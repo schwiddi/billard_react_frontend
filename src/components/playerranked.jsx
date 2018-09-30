@@ -7,9 +7,9 @@ class PlayerRanked extends Component {
     const rank = index + 1;
     return (
       <tr>
-        <td>
-          <p className="text-left">{rank}</p>
-        </td>
+        <th className="text-left" scope="row">
+          {rank}
+        </th>
         <td>
           <p className="text-left">{this.props.player.name}</p>
         </td>
