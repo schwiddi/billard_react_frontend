@@ -7,24 +7,13 @@ class Game extends Component {
   render() {
     return (
       <tr>
-        <td>
-          <p className="text-left">{this.props.game.id}</p>
+        <td className="text-left">{this.props.game.id}</td>
+        <td className="text-right">{this.props.game.playerA}</td>
+        <td className="text-center" colSpan="2">
+          {this.formatScore(this.props.game.scoreplayerA)} :{' '}
+          {this.formatScore(this.props.game.scoreplayerB)}
         </td>
-        <td>
-          <p className="text-right">{this.props.game.playerA}</p>
-        </td>
-        <td colSpan="2">
-          <p className="text-center">
-            {this.formatScore(this.props.game.scoreplayerA)}
-            <span style={defaultsytle}>
-              <strong className="m-1">:</strong>
-            </span>
-            {this.formatScore(this.props.game.scoreplayerB)}
-          </p>
-        </td>
-        <td>
-          <p className="text-left">{this.props.game.playerB}</p>
-        </td>
+        <td className="text-left">{this.props.game.playerB}</td>
       </tr>
     );
   }

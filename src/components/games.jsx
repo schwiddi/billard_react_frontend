@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import { Table } from 'reactstrap';
 import Game from './game';
 
 class Games extends Component {
@@ -8,21 +9,15 @@ class Games extends Component {
 
     return (
       <React.Fragment>
-        <table className="table table-hover">
+        <Table responsive>
           <thead>
             <tr>
-              <th scope="col">
-                <p className="text-left">#</p>
+              <th className="text-left">id</th>
+              <th className="text-right">Player A</th>
+              <th className="text-center" colSpan="2">
+                Score
               </th>
-              <th scope="col">
-                <p className="text-right">Player A</p>
-              </th>
-              <th scope="col" colSpan="2">
-                <p className="text-center">Score</p>
-              </th>
-              <th scope="col">
-                <p className="text-left">Player B</p>
-              </th>
+              <th className="text-left">Player B</th>
             </tr>
           </thead>
           <tbody>
@@ -30,7 +25,7 @@ class Games extends Component {
               <Game key={game.id} game={game} />
             ))}
           </tbody>
-        </table>
+        </Table>
       </React.Fragment>
     );
   }
