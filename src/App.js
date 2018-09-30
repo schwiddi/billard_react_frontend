@@ -9,6 +9,7 @@ import Games from './components/games';
 import Ranking from './components/ranking';
 import AddGameForm from './components/forms/addgameform';
 import RegisterForm from './components/forms/registerform';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -281,6 +282,11 @@ class App extends Component {
                 <RegisterForm onNewUser={this.handleNewUser} {...props} />
               )}
             />
+            <Breadcrumb>
+              <BreadcrumbItem>
+                <p />
+              </BreadcrumbItem>
+            </Breadcrumb>
           </div>
         </main>
       </React.Fragment>
