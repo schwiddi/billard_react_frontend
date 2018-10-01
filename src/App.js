@@ -35,7 +35,8 @@ class App extends Component {
     playersranked: [],
     playersunranked: [],
     mostgames: [],
-    bestplayer: []
+    bestplayer: [],
+    user: {}
   };
 
   async componentDidMount() {
@@ -79,10 +80,8 @@ class App extends Component {
           endPoint + 'playersunranked'
         );
         if (
-          playersunranked === 'Currently no unranked Players in Database...'
+          playersunranked !== 'Currently no unranked Players in Database...'
         ) {
-          return null;
-        } else {
           this.setState({ playersunranked });
         }
 
