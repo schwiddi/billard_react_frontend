@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 import _ from 'lodash';
 import NavBar from './components/navbar';
 import Home from './components/home';
@@ -24,8 +25,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 console.log(process.env);
 
-const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
-// const endPoint = 'http://localhost:3001/api/v1/';
+// const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
+const endPoint = 'http://localhost:3001/api/v1/';
 
 class App extends Component {
   state = {
@@ -105,6 +106,11 @@ class App extends Component {
         let mostgames = mostgamestmp[Object.keys(mostgamestmp)[0]];
         this.setState({ mostgames });
       }
+      try {
+        const jwt = localStorage.getItem('token');
+        const user = jwtDecode(jwt);
+        this.setState({ user });
+      } catch (error) {}
     } catch (ex) {
       console.log(ex);
       toast.error('Backend Error', {
