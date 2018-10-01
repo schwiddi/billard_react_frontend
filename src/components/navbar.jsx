@@ -7,7 +7,11 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
 } from 'reactstrap';
 
 class NavBar extends React.Component {
@@ -49,6 +53,17 @@ class NavBar extends React.Component {
                   ranking
                 </NavLink>
               </NavItem>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  user
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem>login</DropdownItem>
+                  <DropdownItem>register</DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>logout</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
               {/* <NavItem>
                 <NavLink onClick={this.toggle} tag={Link} to="/register">
                   register
