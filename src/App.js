@@ -150,15 +150,9 @@ class App extends Component {
     try {
       // call backend with new user
       await axios.post(endPoint + 'users', newuser);
-      toast.success('success', {
-        position: 'bottom-right',
-        autoClose: true,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true
-      });
       return true;
     } catch (ex) {
+      console.log(ex);
       toast.error('error', {
         position: 'bottom-right',
         autoClose: false,
@@ -232,8 +226,8 @@ class App extends Component {
   handleLogin = async user => {
     try {
       // call auth service
-      const { data: jwtres } = await axios.post(endPoint + 'auth', user);
-      localStorage.setItem('token', jwtres);
+      const res = await axios.post(endPoint + 'auth', user);
+      localStorage.setItem('token', res.headers['x-auth-token']);
       toast.success('you are logged in now', {
         position: 'bottom-right',
         autoClose: true,
