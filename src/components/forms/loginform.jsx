@@ -28,9 +28,7 @@ class LoginForm extends Component {
     if (ret) {
       const loggedin = 'true';
       this.setState({ loggedin });
-      setTimeout(() => {
-        this.props.history.push('/');
-      }, 5000);
+      this.props.history.push('/');
     }
   };
 
