@@ -3,49 +3,50 @@ import { withRouter } from 'react-router-dom';
 import { Button } from 'reactstrap';
 
 class LoginForm extends Component {
-  componentDidMount = () => {};
+  state = {
+    loggedin: '',
+    user: {
+      email: '',
+      password: ''
+    }
+  };
+
+  componentDidMount = () => {
+    const loggedin = 'false';
+    this.setState({ loggedin });
+  };
 
   handleChange = ({ currentTarget: input }) => {
-    const newuser = { ...this.state.newuser };
-    newuser[input.name] = input.value;
-    this.setState({ newuser });
+    const user = { ...this.state.user };
+    user[input.name] = input.value;
+    this.setState({ user });
   };
 
   handleSubmit = async event => {
     event.preventDefault();
-    const ret = await this.props.onNewUser(this.state.newuser);
+    const ret = await this.props.onLogin(this.state.user);
     if (ret) {
-      const successful = 'true';
-      this.setState({ successful });
+      const loggedin = 'true';
+      this.setState({ loggedin });
+      setTimeout(() => {
+        this.props.history.push('/');
+      }, 5000);
     }
-    // this.props.history.push('/games');
   };
 
   render() {
     return (
       <React.Fragment>
-        {/* {this.state.successful &&
-          this.state.successful !== 'true' && (
+        {this.state.loggedin &&
+          this.state.loggedin !== 'true' && (
             <div>
-              <h1>register</h1>
+              <h1>Login</h1>
               <form onSubmit={this.handleSubmit}>
-                <div className="form-group">
-                  <label htmlFor="name">name</label>
-                  <input
-                    id="name"
-                    type="text"
-                    className="form-control"
-                    autoFocus
-                    value={this.state.newuser.name}
-                    onChange={this.handleChange}
-                    name="name"
-                  />
-                </div>
                 <div className="form-group">
                   <label htmlFor="email">email</label>
                   <input
                     id="email"
-                    value={this.state.newuser.email}
+                    value={this.state.user.email}
                     type="email"
                     className="form-control"
                     onChange={this.handleChange}
@@ -55,7 +56,7 @@ class LoginForm extends Component {
                 <div className="form-group">
                   <label htmlFor="password">password</label>
                   <input
-                    value={this.state.newuser.password}
+                    value={this.state.user.password}
                     id="password"
                     type="password"
                     className="form-control"
@@ -63,19 +64,17 @@ class LoginForm extends Component {
                     name="password"
                   />
                 </div>
-                <Button color="primary" size="lg">
-                  register
-                </Button>
+                <Button color="primary">Login</Button>
               </form>
             </div>
           )}
-        {this.state.successful &&
-          this.state.successful !== 'false' && (
+        {this.state.loggedin &&
+          this.state.loggedin !== 'false' && (
             <div>
-              <h1>register</h1>
-              <p>you are now registered</p>
+              <h1>Login</h1>
+              <p>you are logged in now</p>
             </div>
-          )} */}
+          )}
       </React.Fragment>
     );
   }
