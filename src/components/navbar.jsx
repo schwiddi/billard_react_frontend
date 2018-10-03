@@ -40,35 +40,34 @@ class NavBar extends React.Component {
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink onClick={this.toggle} tag={Link} to="/">
-                  home
+                  Home
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink onClick={this.toggle} tag={Link} to="/games">
-                  games
+                  Games
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink onClick={this.toggle} tag={Link} to="/ranking">
-                  ranking
+                  Ranking
                 </NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  user
+                  User
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>login</DropdownItem>
-                  <DropdownItem>register</DropdownItem>
+                  <DropdownItem onClick={this.toggle} tag={Link} to="/login">
+                    Login
+                  </DropdownItem>
+                  <DropdownItem onClick={this.toggle} tag={Link} to="/register">
+                    Register
+                  </DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem>logout</DropdownItem>
+                  <DropdownItem onClick={this.toggle}>Logout</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
-              {/* <NavItem>
-                <NavLink onClick={this.toggle} tag={Link} to="/register">
-                  register
-                </NavLink>
-              </NavItem> */}
             </Nav>
           </Collapse>
         </Navbar>
