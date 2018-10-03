@@ -232,7 +232,8 @@ class App extends Component {
   handleLogin = async user => {
     try {
       // call auth service
-      await axios.post(endPoint + 'auth', user);
+      const { data: jwtres } = await axios.post(endPoint + 'auth', user);
+      localStorage.setItem('token', jwtres);
       toast.success('you are logged in now', {
         position: 'bottom-right',
         autoClose: true,
@@ -257,7 +258,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <ToastContainer position="bottom-right" newestOnTop rtl={false} />
-        <NavBar />
+        <NavBar user={this.state.user} />
         <main role="main" className="container">
           <div style={mt} className="starter-template">
             <Route
