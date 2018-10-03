@@ -10,6 +10,7 @@ import Games from './components/games';
 import Ranking from './components/ranking';
 import AddGameForm from './components/forms/addgameform';
 import RegisterForm from './components/forms/registerform';
+import LoginForm from './components/forms/loginform';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -121,7 +122,7 @@ class App extends Component {
     }
   }
 
-  handleDelete = async id => {
+  handleGameDelete = async id => {
     const originalGames = this.state.games;
     const newGames = this.state.games.filter(p => p.id !== id);
     this.setState({ games: newGames });
@@ -228,6 +229,29 @@ class App extends Component {
     }
   };
 
+  handleLogin = async user => {
+    try {
+      // call auth service
+      await axios.post(endPoint + 'auth', user);
+      toast.success('you are logged in now', {
+        position: 'bottom-right',
+        autoClose: true,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true
+      });
+      return true;
+    } catch (ex) {
+      console.log(ex);
+      toast.error('mail or password wrong...', {
+        position: 'bottom-right',
+        autoClose: false,
+        closeOnClick: true
+      });
+      return false;
+    }
+  };
+
   render() {
     let mt = { marginTop: 10 };
     return (
@@ -284,6 +308,13 @@ class App extends Component {
               exact
               render={props => (
                 <RegisterForm onNewUser={this.handleNewUser} {...props} />
+              )}
+            />
+            <Route
+              path="/login"
+              exact
+              render={props => (
+                <LoginForm onLogin={this.handleLogin} {...props} />
               )}
             />
           </div>
