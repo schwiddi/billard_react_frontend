@@ -43,6 +43,13 @@ class NavBar extends React.Component {
                   Home
                 </NavLink>
               </NavItem>
+              {this.props.user.canAddGame === 1 && (
+                <NavItem>
+                  <NavLink onClick={this.toggle} tag={Link} to="/addgame">
+                    New
+                  </NavLink>
+                </NavItem>
+              )}
               <NavItem>
                 <NavLink onClick={this.toggle} tag={Link} to="/games">
                   Games
@@ -54,19 +61,41 @@ class NavBar extends React.Component {
                 </NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  User
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem onClick={this.toggle} tag={Link} to="/login">
-                    Login
-                  </DropdownItem>
-                  <DropdownItem onClick={this.toggle} tag={Link} to="/register">
-                    Register
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem onClick={this.toggle}>Logout</DropdownItem>
-                </DropdownMenu>
+                {this.props.user.name && (
+                  <DropdownToggle nav caret>
+                    {this.props.user.name}
+                  </DropdownToggle>
+                )}
+                {!this.props.user.name && (
+                  <DropdownToggle nav caret>
+                    User
+                  </DropdownToggle>
+                )}
+                {this.props.user.name && (
+                  <DropdownMenu right>
+                    <DropdownItem onClick={this.toggle}>
+                      Some User Site
+                    </DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem onClick={this.toggle} tag={Link} to="/logout">
+                      Logout
+                    </DropdownItem>
+                  </DropdownMenu>
+                )}
+                {!this.props.user.name && (
+                  <DropdownMenu right>
+                    <DropdownItem onClick={this.toggle} tag={Link} to="/login">
+                      Login
+                    </DropdownItem>
+                    <DropdownItem
+                      onClick={this.toggle}
+                      tag={Link}
+                      to="/register"
+                    >
+                      Register
+                    </DropdownItem>
+                  </DropdownMenu>
+                )}
               </UncontrolledDropdown>
             </Nav>
           </Collapse>
