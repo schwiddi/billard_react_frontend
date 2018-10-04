@@ -81,7 +81,7 @@ class NavBar extends React.Component {
                     {this.props.user.name}
                   </DropdownToggle>
                   <DropdownMenu right>
-                    <DropdownItem onClick={this.toggle}>Profile</DropdownItem>
+                    {/* <DropdownItem onClick={this.toggle}>Profile</DropdownItem> */}
                     <DropdownItem divider />
                     <DropdownItem onClick={this.props.onLogout}>
                       Logout
