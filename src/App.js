@@ -231,17 +231,9 @@ class App extends Component {
       // call auth service
       const res = await axios.post(endPoint + 'auth', user);
       localStorage.setItem('token', res.headers['x-auth-token']);
-      toast.success('you are logged in now', {
-        position: 'bottom-right',
-        autoClose: true,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true
-      });
       return true;
     } catch (ex) {
-      console.log(ex);
-      toast.error('mail or password wrong...', {
+      toast.error('wrong data or not approved yet..', {
         position: 'bottom-right',
         autoClose: false,
         closeOnClick: true
