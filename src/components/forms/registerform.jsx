@@ -29,8 +29,10 @@ class RegisterForm extends Component {
     if (ret) {
       const successful = 'true';
       this.setState({ successful });
+      setTimeout(() => {
+        this.props.history.push('/');
+      }, 5000);
     }
-    // this.props.history.push('/games');
   };
 
   render() {
@@ -84,8 +86,12 @@ class RegisterForm extends Component {
         {this.state.successful &&
           this.state.successful !== 'false' && (
             <div>
-              <h1>register</h1>
-              <p>you are now registered</p>
+              <h1>Registered</h1>
+              <p>
+                you are now registered, please wait until someone has approved
+                your account...
+              </p>
+              <p>maybe you'll see a shooting star when the time comes..</p>
             </div>
           )}
       </React.Fragment>

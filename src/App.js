@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 import _ from 'lodash';
 import NavBar from './components/navbar';
 import Home from './components/home';
@@ -9,6 +10,7 @@ import Games from './components/games';
 import Ranking from './components/ranking';
 import AddGameForm from './components/forms/addgameform';
 import RegisterForm from './components/forms/registerform';
+import LoginForm from './components/forms/loginform';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -22,7 +24,10 @@ import 'react-toastify/dist/ReactToastify.css';
 //   return Promise.reject(error);
 // });
 
-console.log(process.env);
+// setting header for all axios calls
+axios.defaults.headers.common['x-auth-token'] = localStorage.getItem('token');
+
+// console.log(process.env);
 
 const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
 // const endPoint = 'http://localhost:3001/api/v1/';
@@ -105,6 +110,11 @@ class App extends Component {
         let mostgames = mostgamestmp[Object.keys(mostgamestmp)[0]];
         this.setState({ mostgames });
       }
+      try {
+        const jwt = localStorage.getItem('token');
+        const user = jwtDecode(jwt);
+        this.setState({ user });
+      } catch (error) {}
     } catch (ex) {
       console.log(ex);
       toast.error('Backend Error', {
@@ -115,7 +125,7 @@ class App extends Component {
     }
   }
 
-  handleDelete = async id => {
+  handleGameDelete = async id => {
     const originalGames = this.state.games;
     const newGames = this.state.games.filter(p => p.id !== id);
     this.setState({ games: newGames });
@@ -143,15 +153,9 @@ class App extends Component {
     try {
       // call backend with new user
       await axios.post(endPoint + 'users', newuser);
-      toast.success('success', {
-        position: 'bottom-right',
-        autoClose: true,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true
-      });
       return true;
     } catch (ex) {
+      console.log(ex);
       toast.error('error', {
         position: 'bottom-right',
         autoClose: false,
@@ -222,12 +226,42 @@ class App extends Component {
     }
   };
 
+  handleLogin = async user => {
+    try {
+      // call auth service
+      const res = await axios.post(endPoint + 'auth', user);
+      localStorage.setItem('token', res.headers['x-auth-token']);
+      toast.success('you are logged in now', {
+        position: 'bottom-right',
+        autoClose: true,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true
+      });
+      return true;
+    } catch (ex) {
+      console.log(ex);
+      toast.error('mail or password wrong...', {
+        position: 'bottom-right',
+        autoClose: false,
+        closeOnClick: true
+      });
+      return false;
+    }
+  };
+  handleLogout = async () => {
+    try {
+      localStorage.removeItem('token');
+      window.location = '/';
+    } catch (ex) {}
+  };
+
   render() {
     let mt = { marginTop: 10 };
     return (
       <React.Fragment>
         <ToastContainer position="bottom-right" newestOnTop rtl={false} />
-        <NavBar />
+        <NavBar user={this.state.user} onLogout={this.handleLogout} />
         <main role="main" className="container">
           <div style={mt} className="starter-template">
             <Route
@@ -278,6 +312,13 @@ class App extends Component {
               exact
               render={props => (
                 <RegisterForm onNewUser={this.handleNewUser} {...props} />
+              )}
+            />
+            <Route
+              path="/login"
+              exact
+              render={props => (
+                <LoginForm onLogin={this.handleLogin} {...props} />
               )}
             />
           </div>

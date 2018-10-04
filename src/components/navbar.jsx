@@ -7,7 +7,11 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
 } from 'reactstrap';
 
 class NavBar extends React.Component {
@@ -36,24 +40,55 @@ class NavBar extends React.Component {
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink onClick={this.toggle} tag={Link} to="/">
-                  home
+                  Home
                 </NavLink>
               </NavItem>
+              {this.props.user.canAddGame === 1 && (
+                <NavItem>
+                  <NavLink onClick={this.toggle} tag={Link} to="/addgame">
+                    New
+                  </NavLink>
+                </NavItem>
+              )}
               <NavItem>
                 <NavLink onClick={this.toggle} tag={Link} to="/games">
-                  games
+                  Games
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink onClick={this.toggle} tag={Link} to="/ranking">
-                  ranking
+                  Ranking
                 </NavLink>
               </NavItem>
-              {/* <NavItem>
-                <NavLink onClick={this.toggle} tag={Link} to="/register">
-                  register
-                </NavLink>
-              </NavItem> */}
+
+              {!this.props.user.name && (
+                <React.Fragment>
+                  <NavItem>
+                    <NavLink onClick={this.toggle} tag={Link} to="/register">
+                      Register
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink onClick={this.toggle} tag={Link} to="/login">
+                      Login
+                    </NavLink>
+                  </NavItem>
+                </React.Fragment>
+              )}
+              {this.props.user.name && (
+                <UncontrolledDropdown nav inNavbar>
+                  <DropdownToggle nav caret>
+                    {this.props.user.name}
+                  </DropdownToggle>
+                  <DropdownMenu right>
+                    <DropdownItem onClick={this.toggle}>Profile</DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem onClick={this.props.onLogout}>
+                      Logout
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              )}
             </Nav>
           </Collapse>
         </Navbar>
