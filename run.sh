@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "i'm run.sh"
 echo "testing npm"
-if [ -x "$(command -v npm)" ];
+if [ -x "$(command -v sudo npm)" ];
 then
   echo 'using standard npm ...'
   sudo PORT=80 npm start
