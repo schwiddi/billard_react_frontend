@@ -29,8 +29,8 @@ axios.defaults.headers.common['x-auth-token'] = localStorage.getItem('token');
 
 // console.log(process.env);
 
-// const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
-const endPoint = 'http://localhost:3001/api/v1/';
+const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
+// const endPoint = 'http://localhost:3001/api/v1/';
 
 class App extends Component {
   state = {
