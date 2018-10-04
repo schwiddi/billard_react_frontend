@@ -24,6 +24,9 @@ import 'react-toastify/dist/ReactToastify.css';
 //   return Promise.reject(error);
 // });
 
+// setting header for all axios calls
+axios.defaults.headers.common['x-auth-token'] = localStorage.getItem('token');
+
 // console.log(process.env);
 
 // const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
@@ -246,13 +249,19 @@ class App extends Component {
       return false;
     }
   };
+  handleLogout = async () => {
+    try {
+      localStorage.removeItem('token');
+      window.location = '/';
+    } catch (ex) {}
+  };
 
   render() {
     let mt = { marginTop: 10 };
     return (
       <React.Fragment>
         <ToastContainer position="bottom-right" newestOnTop rtl={false} />
-        <NavBar user={this.state.user} />
+        <NavBar user={this.state.user} onLogout={this.handleLogout} />
         <main role="main" className="container">
           <div style={mt} className="starter-template">
             <Route
