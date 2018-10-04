@@ -28,7 +28,7 @@ class LoginForm extends Component {
     if (ret) {
       const loggedin = 'true';
       this.setState({ loggedin });
-      this.props.history.push('/');
+      window.location = '/';
     }
   };
 
