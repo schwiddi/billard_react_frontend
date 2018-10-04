@@ -85,10 +85,10 @@ class RegisterForm extends Component {
             <div>
               <h1>Registered</h1>
               <p>
-                you are now registered, please wait until someone has approved
-                your account...
+                you are now registered, please wait until someone approved
+                this...
               </p>
-              <p>maybe you'll see a shooting star when the time comes..</p>
+              <p>maybe you'll see a shooting star when the time comes!!</p>
             </div>
           )}
       </React.Fragment>
