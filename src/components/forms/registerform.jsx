@@ -29,9 +29,6 @@ class RegisterForm extends Component {
     if (ret) {
       const successful = 'true';
       this.setState({ successful });
-      setTimeout(() => {
-        this.props.history.push('/');
-      }, 5000);
     }
   };
 
