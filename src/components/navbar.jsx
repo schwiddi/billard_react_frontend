@@ -82,6 +82,15 @@ class NavBar extends React.Component {
                   </DropdownToggle>
                   <DropdownMenu right>
                     {/* <DropdownItem onClick={this.toggle}>Profile</DropdownItem> */}
+                    {this.props.user.playerid === 0 && (
+                      <DropdownItem
+                        onClick={this.toggle}
+                        tag={Link}
+                        to="/claimplayeridform"
+                      >
+                        claim playerid
+                      </DropdownItem>
+                    )}
                     <DropdownItem divider />
                     <DropdownItem onClick={this.props.onLogout}>
                       Logout

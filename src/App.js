@@ -11,6 +11,7 @@ import Ranking from './components/ranking';
 import AddGameForm from './components/forms/addgameform';
 import RegisterForm from './components/forms/registerform';
 import LoginForm from './components/forms/loginform';
+import ClaimPlayerId from './components/forms/claimplayeridform';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,8 +30,8 @@ axios.defaults.headers.common['x-auth-token'] = localStorage.getItem('token');
 
 // console.log(process.env);
 
-const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
-// const endPoint = 'http://localhost:3001/api/v1/';
+// const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
+const endPoint = 'http://localhost:3001/api/v1/';
 
 class App extends Component {
   state = {
@@ -228,7 +229,6 @@ class App extends Component {
 
   handleLogin = async user => {
     try {
-      // call auth service
       const res = await axios.post(endPoint + 'auth', user);
       localStorage.setItem('token', res.headers['x-auth-token']);
       return true;
@@ -312,6 +312,11 @@ class App extends Component {
               render={props => (
                 <LoginForm onLogin={this.handleLogin} {...props} />
               )}
+            />
+            <Route
+              path="/claimplayeridform"
+              exact
+              render={props => <ClaimPlayerId {...props} />}
             />
           </div>
         </main>
