@@ -60,43 +60,35 @@ class NavBar extends React.Component {
                   Ranking
                 </NavLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                {this.props.user.name && (
+
+              {!this.props.user.name && (
+                <React.Fragment>
+                  <NavItem>
+                    <NavLink onClick={this.toggle} tag={Link} to="/register">
+                      Register
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink onClick={this.toggle} tag={Link} to="/login">
+                      Login
+                    </NavLink>
+                  </NavItem>
+                </React.Fragment>
+              )}
+              {this.props.user.name && (
+                <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret>
                     {this.props.user.name}
                   </DropdownToggle>
-                )}
-                {!this.props.user.name && (
-                  <DropdownToggle nav caret>
-                    User
-                  </DropdownToggle>
-                )}
-                {this.props.user.name && (
                   <DropdownMenu right>
-                    <DropdownItem onClick={this.toggle}>
-                      Some User Site
-                    </DropdownItem>
+                    <DropdownItem onClick={this.toggle}>Profile</DropdownItem>
                     <DropdownItem divider />
-                    <DropdownItem onClick={this.toggle} tag={Link} to="/logout">
+                    <DropdownItem onClick={this.props.onLogout}>
                       Logout
                     </DropdownItem>
                   </DropdownMenu>
-                )}
-                {!this.props.user.name && (
-                  <DropdownMenu right>
-                    <DropdownItem onClick={this.toggle} tag={Link} to="/login">
-                      Login
-                    </DropdownItem>
-                    <DropdownItem
-                      onClick={this.toggle}
-                      tag={Link}
-                      to="/register"
-                    >
-                      Register
-                    </DropdownItem>
-                  </DropdownMenu>
-                )}
-              </UncontrolledDropdown>
+                </UncontrolledDropdown>
+              )}
             </Nav>
           </Collapse>
         </Navbar>
