@@ -5,19 +5,11 @@ class PlayerUnranked extends Component {
   render() {
     return (
       <tr>
-        <td>
-          <p className="text-left">{this.props.player.name}</p>
-        </td>
-        <td>
-          <p className="text-center">{this.props.player.games_won}</p>
-        </td>
-        <td>
-          <p className="text-center">{this.props.player.games_total}</p>
-        </td>
-        <td>
-          <p className="text-center">
-            {parseFloat(this.props.player.games_win_lost).toFixed(0)}%
-          </p>
+        <td className="text-left">{this.props.player.name}</td>
+        <td className="text-center">{this.props.player.games_won}</td>
+        <td className="text-center">{this.props.player.games_total}</td>
+        <td className="text-center">
+          {parseFloat(this.props.player.games_win_lost).toFixed(0)}%
         </td>
       </tr>
     );
