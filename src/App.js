@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
@@ -275,29 +275,38 @@ class App extends Component {
             <Route
               path="/games"
               exact
-              render={props => <Games games={this.state.games} {...props} />}
+              render={props => {
+                if (!this.state.user.name) return <Redirect to="/" />;
+                return <Games games={this.state.games} {...props} />;
+              }}
             />
             <Route
               path="/ranking"
               exact
-              render={props => (
-                <Ranking
-                  playersranked={this.state.playersranked}
-                  playersunranked={this.state.playersunranked}
-                  {...props}
-                />
-              )}
+              render={props => {
+                if (!this.state.user.name) return <Redirect to="/" />;
+                return (
+                  <Ranking
+                    playersranked={this.state.playersranked}
+                    playersunranked={this.state.playersunranked}
+                    {...props}
+                  />
+                );
+              }}
             />
             <Route
               path="/addgame"
               exact
-              render={props => (
-                <AddGameForm
-                  playernames={this.state.playernames}
-                  onNewGame={this.handleNewGame}
-                  {...props}
-                />
-              )}
+              render={props => {
+                if (!this.state.user.name) return <Redirect to="/" />;
+                return (
+                  <AddGameForm
+                    playernames={this.state.playernames}
+                    onNewGame={this.handleNewGame}
+                    {...props}
+                  />
+                );
+              }}
             />
             <Route
               path="/register"
@@ -316,7 +325,10 @@ class App extends Component {
             <Route
               path="/claimplayeridform"
               exact
-              render={props => <ClaimPlayerIdForm {...props} />}
+              render={props => {
+                if (!this.state.user.name) return <Redirect to="/" />;
+                return <ClaimPlayerIdForm {...props} />;
+              }}
             />
           </div>
         </main>
