@@ -11,7 +11,7 @@ import Ranking from './components/ranking';
 import AddGameForm from './components/forms/addgameform';
 import RegisterForm from './components/forms/registerform';
 import LoginForm from './components/forms/loginform';
-import ClaimPlayerId from './components/forms/claimplayeridform';
+import ClaimPlayerIdForm from './components/forms/claimplayeridform';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -316,7 +316,7 @@ class App extends Component {
             <Route
               path="/claimplayeridform"
               exact
-              render={props => <ClaimPlayerId {...props} />}
+              render={props => <ClaimPlayerIdForm {...props} />}
             />
           </div>
         </main>
