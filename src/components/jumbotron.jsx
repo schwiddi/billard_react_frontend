@@ -9,7 +9,8 @@ const Jumbo = props => {
           <h1 className="display-3">r21Billard</h1>
           <p className="lead">
             upcoming:
-            <br />- registration
+            <br />- registration - done!
+            <br />- claime playerid
             <br />- playerdetailscard
             <br />- Events
           </p>

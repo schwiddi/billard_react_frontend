@@ -50,17 +50,20 @@ class NavBar extends React.Component {
                   </NavLink>
                 </NavItem>
               )}
-              <NavItem>
-                <NavLink onClick={this.toggle} tag={Link} to="/games">
-                  Games
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink onClick={this.toggle} tag={Link} to="/ranking">
-                  Ranking
-                </NavLink>
-              </NavItem>
-
+              {this.props.user.name && (
+                <React.Fragment>
+                  <NavItem>
+                    <NavLink onClick={this.toggle} tag={Link} to="/games">
+                      Games
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink onClick={this.toggle} tag={Link} to="/ranking">
+                      Ranking
+                    </NavLink>
+                  </NavItem>
+                </React.Fragment>
+              )}
               {!this.props.user.name && (
                 <React.Fragment>
                   <NavItem>
@@ -82,6 +85,15 @@ class NavBar extends React.Component {
                   </DropdownToggle>
                   <DropdownMenu right>
                     {/* <DropdownItem onClick={this.toggle}>Profile</DropdownItem> */}
+                    {/* {this.props.user.playerid === 0 && (
+                      <DropdownItem
+                        onClick={this.toggle}
+                        tag={Link}
+                        to="/claimplayeridform"
+                      >
+                        claim playerid
+                      </DropdownItem>
+                    )} */}
                     <DropdownItem divider />
                     <DropdownItem onClick={this.props.onLogout}>
                       Logout
