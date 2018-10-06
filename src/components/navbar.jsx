@@ -78,6 +78,7 @@ class NavBar extends React.Component {
                   </NavItem>
                 </React.Fragment>
               )}
+
               {this.props.user.name && (
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret>
@@ -94,6 +95,18 @@ class NavBar extends React.Component {
                         claim playerid
                       </DropdownItem>
                     )} */}
+                    {this.props.user.isAdmin === 1 && (
+                      <React.Fragment>
+                        <DropdownItem divider />
+                        <DropdownItem
+                          onClick={this.toggle}
+                          tag={Link}
+                          to="/myadminpage"
+                        >
+                          Admin
+                        </DropdownItem>
+                      </React.Fragment>
+                    )}
                     <DropdownItem divider />
                     <DropdownItem onClick={this.props.onLogout}>
                       Logout
