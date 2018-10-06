@@ -16,9 +16,6 @@ class Users extends Component {
                 <th>playerid</th>
                 <th>name</th>
                 <th>email</th>
-                <th>ts_insert</th>
-                <th>ts_update</th>
-                <th>ts_lastlogin</th>
                 <th>isAdmin</th>
                 <th>canAddGame</th>
                 <th>isApproved</th>
