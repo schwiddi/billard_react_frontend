@@ -12,6 +12,7 @@ import AddGameForm from './components/forms/addgameform';
 import RegisterForm from './components/forms/registerform';
 import LoginForm from './components/forms/loginform';
 import ClaimPlayerIdForm from './components/forms/claimplayeridform';
+import MyAdminPage from './components/admin/myadminpage';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -30,8 +31,8 @@ axios.defaults.headers.common['x-auth-token'] = localStorage.getItem('token');
 
 // console.log(process.env);
 
-const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
-// const endPoint = 'http://localhost:3001/api/v1/';
+// const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
+const endPoint = 'http://localhost:3001/api/v1/';
 
 class App extends Component {
   state = {
@@ -306,6 +307,14 @@ class App extends Component {
                     {...props}
                   />
                 );
+              }}
+            />
+            <Route
+              path="/myadminpage"
+              exact
+              render={props => {
+                if (!this.state.user.isAdmin) return <Redirect to="/" />;
+                return <MyAdminPage {...props} />;
               }}
             />
             <Route
