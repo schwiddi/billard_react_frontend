@@ -15,26 +15,31 @@ class Ranking extends Component {
         <Table hover responsive size="sm">
           <thead>
             <tr>
-              <th scope="col">
-                <p className="text-left">Rank</p>
+              <th scope="col" className="text-left">
+                Rank
               </th>
-              <th scope="col">
-                <p className="text-left">Name</p>
+              <th scope="col" className="text-left">
+                Name
               </th>
-              <th scope="col">
-                <p className="text-center">Wins</p>
+              <th scope="col" className="text-center">
+                Wins
               </th>
-              <th scope="col">
-                <p className="text-center">Total</p>
+              <th scope="col" className="text-center">
+                Total
               </th>
-              <th scope="col">
-                <p className="text-center">%</p>
+              <th scope="col" className="text-center">
+                %
               </th>
             </tr>
           </thead>
           <tbody>
             {playersranked.map((player, index) => (
-              <PlayerRanked key={player.id} player={player} index={index} />
+              <PlayerRanked
+                key={player.id}
+                playerid={player.id}
+                player={player}
+                index={index}
+              />
             ))}
           </tbody>
         </Table>
@@ -42,17 +47,17 @@ class Ranking extends Component {
         <Table hover responsive size="sm">
           <thead>
             <tr>
-              <th scope="col">
-                <p className="text-left">Name</p>
+              <th scope="col" className="text-left">
+                Name
               </th>
-              <th scope="col">
-                <p className="text-center">Wins</p>
+              <th scope="col" className="text-center">
+                Wins
               </th>
-              <th scope="col">
-                <p className="text-center">Total</p>
+              <th scope="col" className="text-center">
+                Total
               </th>
-              <th scope="col">
-                <p className="text-center">%</p>
+              <th scope="col" className="text-center">
+                %
               </th>
             </tr>
           </thead>

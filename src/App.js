@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
@@ -12,6 +12,7 @@ import AddGameForm from './components/forms/addgameform';
 import RegisterForm from './components/forms/registerform';
 import LoginForm from './components/forms/loginform';
 import ClaimPlayerIdForm from './components/forms/claimplayeridform';
+import MyAdminPage from './components/admin/myadminpage';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -30,8 +31,8 @@ axios.defaults.headers.common['x-auth-token'] = localStorage.getItem('token');
 
 // console.log(process.env);
 
-const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
-// const endPoint = 'http://localhost:3001/api/v1/';
+// const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
+const endPoint = 'http://localhost:3001/api/v1/';
 
 class App extends Component {
   state = {
@@ -275,29 +276,46 @@ class App extends Component {
             <Route
               path="/games"
               exact
-              render={props => <Games games={this.state.games} {...props} />}
+              render={props => {
+                if (!this.state.user.name) return <Redirect to="/" />;
+                return <Games games={this.state.games} {...props} />;
+              }}
             />
             <Route
               path="/ranking"
               exact
-              render={props => (
-                <Ranking
-                  playersranked={this.state.playersranked}
-                  playersunranked={this.state.playersunranked}
-                  {...props}
-                />
-              )}
+              render={props => {
+                if (!this.state.user.name) return <Redirect to="/" />;
+                return (
+                  <Ranking
+                    playersranked={this.state.playersranked}
+                    playersunranked={this.state.playersunranked}
+                    {...props}
+                  />
+                );
+              }}
             />
             <Route
               path="/addgame"
               exact
-              render={props => (
-                <AddGameForm
-                  playernames={this.state.playernames}
-                  onNewGame={this.handleNewGame}
-                  {...props}
-                />
-              )}
+              render={props => {
+                if (!this.state.user.name) return <Redirect to="/" />;
+                return (
+                  <AddGameForm
+                    playernames={this.state.playernames}
+                    onNewGame={this.handleNewGame}
+                    {...props}
+                  />
+                );
+              }}
+            />
+            <Route
+              path="/myadminpage"
+              exact
+              render={props => {
+                if (!this.state.user.isAdmin) return <Redirect to="/" />;
+                return <MyAdminPage {...props} />;
+              }}
             />
             <Route
               path="/register"
@@ -316,7 +334,10 @@ class App extends Component {
             <Route
               path="/claimplayeridform"
               exact
-              render={props => <ClaimPlayerIdForm {...props} />}
+              render={props => {
+                if (!this.state.user.name) return <Redirect to="/" />;
+                return <ClaimPlayerIdForm {...props} />;
+              }}
             />
           </div>
         </main>
