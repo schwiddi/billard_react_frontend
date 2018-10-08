@@ -6,9 +6,8 @@ const Jumbo = props => {
     <div>
       <Jumbotron>
         <Container fluid>
-          <h1 className="display-3">r21Billard</h1>
-          <p className="lead">
-            upcoming:
+          <h1 className="display-5">upcomming:</h1>
+          <p>
             <br />- registration - done!
             <br />- claime playerid
             <br />- playerdetailscard
