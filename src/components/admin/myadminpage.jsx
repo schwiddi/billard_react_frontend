@@ -4,8 +4,8 @@ import Users from './users';
 import Unapproved from './unapproved';
 import { toast } from 'react-toastify';
 
-const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
-// const endPoint = 'http://localhost:3001/api/v1/';
+// const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
+const endPoint = 'http://localhost:3001/api/v1/';
 
 export default class MyAdminPage extends Component {
   state = {
