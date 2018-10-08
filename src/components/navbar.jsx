@@ -33,7 +33,7 @@ class NavBar extends React.Component {
       <div>
         <Navbar className="navbar navbar-expand-md navbar-dark bg-dark navbar-fixed-top">
           <NavbarBrand tag={Link} to="/">
-            r21Billard
+            r21.Billard
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} className="mr-2" />
           <Collapse isOpen={this.state.isOpen} navbar>
