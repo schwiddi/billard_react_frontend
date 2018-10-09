@@ -9,7 +9,7 @@ class Users extends Component {
     return (
       <React.Fragment>
         {this.props.users && (
-          <Table hover responsive>
+          <Table hover responsive size="sm">
             <thead>
               <tr>
                 <th>id</th>
