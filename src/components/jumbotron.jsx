@@ -7,8 +7,9 @@ const Jumbo = props => {
       <Jumbotron>
         <Container fluid>
           <h1 className="display-5">upcomming:</h1>
-          <p>
+          <p className="lead">
             <br />- registration - done!
+            <br />- login - done!
             <br />- claime playerid
             <br />- playerdetailscard
             <br />- Events
