@@ -10,6 +10,7 @@ const Jumbo = props => {
           <p className="lead">
             upcoming:
             <br />- registration - done!
+            <br />- login - done!
             <br />- claime playerid
             <br />- playerdetailscard
             <br />- Events
