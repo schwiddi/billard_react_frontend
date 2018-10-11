@@ -46,6 +46,18 @@ class App extends Component {
     user: {}
   };
 
+  comparewinloss(a, b) {
+    if (a.games_win_lost < b.games_win_lost) return 1;
+    if (a.games_win_lost > b.games_win_lost) return -1;
+    return 0;
+  }
+
+  comparetotal(a, b) {
+    if (a.games_total < b.games_total) return 1;
+    if (a.games_total > b.games_total) return -1;
+    return 0;
+  }
+
   async componentDidMount() {
     try {
       const { data: games } = await axios.get(endPoint + 'games');
@@ -81,6 +93,10 @@ class App extends Component {
         );
         if (playersranked !== 'Currently no ranked Players in Database...') {
           this.setState({ playersranked });
+          let bestplayertmp = playersranked;
+          bestplayertmp.sort(this.comparewinloss);
+          let bestplayer = bestplayertmp[Object.keys(bestplayertmp)[0]];
+          this.setState({ bestplayer });
         }
 
         const { data: playersunranked } = await axios.get(
@@ -91,24 +107,8 @@ class App extends Component {
         ) {
           this.setState({ playersunranked });
         }
-
-        function comparewinloss(a, b) {
-          if (a.games_win_lost < b.games_win_lost) return 1;
-          if (a.games_win_lost > b.games_win_lost) return -1;
-          return 0;
-        }
-        let bestplayertmp = playersranked;
-        bestplayertmp.sort(comparewinloss);
-        let bestplayer = bestplayertmp[Object.keys(bestplayertmp)[0]];
-        this.setState({ bestplayer });
-
-        function comparetotal(a, b) {
-          if (a.games_total < b.games_total) return 1;
-          if (a.games_total > b.games_total) return -1;
-          return 0;
-        }
         let mostgamestmp = players;
-        mostgamestmp.sort(comparetotal);
+        mostgamestmp.sort(this.comparetotal);
         let mostgames = mostgamestmp[Object.keys(mostgamestmp)[0]];
         this.setState({ mostgames });
       }
@@ -269,6 +269,7 @@ class App extends Component {
                   bestplayer={this.state.bestplayer.name}
                   bestplayerratio={this.state.bestplayer.games_win_lost}
                   rankedplayerscount={this.state.playersranked.length}
+                  user={this.state.user}
                   {...props}
                 />
               )}
