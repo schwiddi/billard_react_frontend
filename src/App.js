@@ -13,6 +13,7 @@ import RegisterForm from './components/forms/registerform';
 import LoginForm from './components/forms/loginform';
 import ClaimPlayerIdForm from './components/forms/claimplayeridform';
 import MyAdminPage from './components/admin/myadminpage';
+import Profile from './components/profile/profile';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -338,6 +339,14 @@ class App extends Component {
               render={props => {
                 if (!this.state.user.name) return <Redirect to="/" />;
                 return <ClaimPlayerIdForm {...props} />;
+              }}
+            />
+            <Route
+              path="/profile"
+              exact
+              render={props => {
+                if (!this.state.user.name) return <Redirect to="/" />;
+                return <Profile {...props} />;
               }}
             />
           </div>
