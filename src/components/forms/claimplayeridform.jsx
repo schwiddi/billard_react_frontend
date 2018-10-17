@@ -42,7 +42,7 @@ export default class ClaimePlayerId extends Component {
 
     return (
       <React.Fragment>
-        <h1>Claime Player ID</h1>
+        <h1>Claim Player ID</h1>
         <p>
           Here you can claim to be a player that has already played games on the
           famous r21.Billiard Table!
