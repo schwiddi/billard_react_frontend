@@ -33,7 +33,7 @@ class NavBar extends React.Component {
       <div>
         <Navbar className="navbar navbar-expand-md navbar-dark bg-dark navbar-fixed-top">
           <NavbarBrand tag={Link} to="/">
-            r21Billard
+            r21.Billiard
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} className="mr-2" />
           <Collapse isOpen={this.state.isOpen} navbar>
@@ -85,16 +85,23 @@ class NavBar extends React.Component {
                     {this.props.user.name}
                   </DropdownToggle>
                   <DropdownMenu right>
-                    {/* <DropdownItem onClick={this.toggle}>Profile</DropdownItem> */}
-                    {/* {this.props.user.playerid === 0 && (
-                      <DropdownItem
-                        onClick={this.toggle}
-                        tag={Link}
-                        to="/claimplayeridform"
-                      >
-                        claim playerid
-                      </DropdownItem>
-                    )} */}
+                    {/* <DropdownItem
+                      onClick={this.toggle}
+                      tag={Link}
+                      to="/profile"
+                    >
+                      Profile
+                    </DropdownItem> */}
+                    {this.props.user.claimedPlayerId === 0 ||
+                      (this.props.user.isAdmin === 1 && (
+                        <DropdownItem
+                          onClick={this.toggle}
+                          tag={Link}
+                          to="/claimplayeridform"
+                        >
+                          Claim Player ID
+                        </DropdownItem>
+                      ))}
                     {this.props.user.isAdmin === 1 && (
                       <React.Fragment>
                         <DropdownItem divider />

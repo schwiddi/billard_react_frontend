@@ -13,6 +13,7 @@ import RegisterForm from './components/forms/registerform';
 import LoginForm from './components/forms/loginform';
 import ClaimPlayerIdForm from './components/forms/claimplayeridform';
 import MyAdminPage from './components/admin/myadminpage';
+import Profile from './components/profile/profile';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -45,6 +46,18 @@ class App extends Component {
     bestplayer: [],
     user: {}
   };
+
+  comparewinloss(a, b) {
+    if (a.games_win_lost < b.games_win_lost) return 1;
+    if (a.games_win_lost > b.games_win_lost) return -1;
+    return 0;
+  }
+
+  comparetotal(a, b) {
+    if (a.games_total < b.games_total) return 1;
+    if (a.games_total > b.games_total) return -1;
+    return 0;
+  }
 
   async componentDidMount() {
     try {
@@ -81,6 +94,10 @@ class App extends Component {
         );
         if (playersranked !== 'Currently no ranked Players in Database...') {
           this.setState({ playersranked });
+          let bestplayertmp = playersranked;
+          bestplayertmp.sort(this.comparewinloss);
+          let bestplayer = bestplayertmp[Object.keys(bestplayertmp)[0]];
+          this.setState({ bestplayer });
         }
 
         const { data: playersunranked } = await axios.get(
@@ -91,24 +108,8 @@ class App extends Component {
         ) {
           this.setState({ playersunranked });
         }
-
-        function comparewinloss(a, b) {
-          if (a.games_win_lost < b.games_win_lost) return 1;
-          if (a.games_win_lost > b.games_win_lost) return -1;
-          return 0;
-        }
-        let bestplayertmp = playersranked;
-        bestplayertmp.sort(comparewinloss);
-        let bestplayer = bestplayertmp[Object.keys(bestplayertmp)[0]];
-        this.setState({ bestplayer });
-
-        function comparetotal(a, b) {
-          if (a.games_total < b.games_total) return 1;
-          if (a.games_total > b.games_total) return -1;
-          return 0;
-        }
         let mostgamestmp = players;
-        mostgamestmp.sort(comparetotal);
+        mostgamestmp.sort(this.comparetotal);
         let mostgames = mostgamestmp[Object.keys(mostgamestmp)[0]];
         this.setState({ mostgames });
       }
@@ -269,6 +270,7 @@ class App extends Component {
                   bestplayer={this.state.bestplayer.name}
                   bestplayerratio={this.state.bestplayer.games_win_lost}
                   rankedplayerscount={this.state.playersranked.length}
+                  user={this.state.user}
                   {...props}
                 />
               )}
@@ -336,7 +338,22 @@ class App extends Component {
               exact
               render={props => {
                 if (!this.state.user.name) return <Redirect to="/" />;
-                return <ClaimPlayerIdForm {...props} />;
+                return (
+                  <ClaimPlayerIdForm
+                    user={this.state.user}
+                    players={this.state.players}
+                    onLogout={this.handleLogout}
+                    {...props}
+                  />
+                );
+              }}
+            />
+            <Route
+              path="/profile"
+              exact
+              render={props => {
+                if (!this.state.user.name) return <Redirect to="/" />;
+                return <Profile {...props} />;
               }}
             />
           </div>

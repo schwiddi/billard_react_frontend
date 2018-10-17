@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Users from './users';
-import Unapproved from './unapproved';
 import { toast } from 'react-toastify';
 
 const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
@@ -9,31 +8,13 @@ const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
 
 export default class MyAdminPage extends Component {
   state = {
-    users: [],
-    unApprovedUsers: []
+    users: []
   };
 
-  getUnApprovedUsers(users) {
-    try {
-      const unApprovedUsers = users.filter(item => item.isApproved === 0);
-      return unApprovedUsers;
-    } catch (error) {
-      return null;
-    }
-  }
-
-  componentDidMount() {
-    try {
-      this.updateStates();
-    } catch (error) {}
-  }
-
-  async updateStates() {
+  async componentDidMount() {
     try {
       const { data: users } = await axios.get(endPoint + 'users');
       this.setState({ users });
-      const unApprovedUsers = this.getUnApprovedUsers(this.state.users);
-      this.setState({ unApprovedUsers });
     } catch (error) {}
   }
 
@@ -41,31 +22,45 @@ export default class MyAdminPage extends Component {
     try {
       const object = { userid: userid };
       await axios.post(endPoint + 'approveuser', object);
-      toast.success('Approved', {
+    } catch (error) {
+      toast.error('error... page will be reloaded..', {
         position: 'bottom-right',
         autoClose: true,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true
+        pauseOnHover: false,
+        closeOnClick: false
       });
+
+      setTimeout(() => {
+        window.location = '/';
+      }, 5000);
+    }
+  }
+
+  async handlecanAddGame(userid) {
+    try {
+      const object = { userid: userid };
+      await axios.post(endPoint + 'switchcanaddgame', object);
     } catch (error) {
-      toast.error('error', {
+      toast.error('error... page will be reloaded..', {
         position: 'bottom-right',
-        autoClose: false,
-        closeOnClick: true
+        autoClose: true,
+        pauseOnHover: false,
+        closeOnClick: false
       });
+
+      setTimeout(() => {
+        window.location = '/';
+      }, 5000);
     }
   }
 
   render() {
     return (
       <React.Fragment>
-        <h1>users</h1>
-        <Users users={this.state.users} />
-        <h1>unapproved</h1>
-        <Unapproved
-          unApprovedUsers={this.state.unApprovedUsers}
+        <Users
+          users={this.state.users}
           onApprove={this.handleApprove}
+          oncanAddGame={this.handlecanAddGame}
         />
       </React.Fragment>
     );

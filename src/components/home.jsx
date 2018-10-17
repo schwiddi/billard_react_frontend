@@ -12,24 +12,29 @@ import 'bootstrap/dist/css/bootstrap.css';
 class Home extends Component {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Jumbo />
-        <CardColumns>
-          <BestPlayerCard
-            bestplayer={this.props.bestplayer}
-            bestplayerratio={this.props.bestplayerratio}
-          />
-          <MostGamesCard
-            mostgamer={this.props.mostgamer}
-            mostgamercount={this.props.mostgamercount}
-          />
-          <TotalGamesCard gamescount={this.props.gamescount} />
-          <TotalPlayersCard players={this.props.players} />
-          <RankedPlayersCard
-            rankedplayerscount={this.props.rankedplayerscount}
-          />
-        </CardColumns>
-      </div>
+        {this.props.user.name && (
+          <CardColumns>
+            <BestPlayerCard
+              bestplayer={this.props.bestplayer}
+              bestplayerratio={this.props.bestplayerratio}
+            />
+            <MostGamesCard
+              mostgamer={this.props.mostgamer}
+              mostgamercount={this.props.mostgamercount}
+            />
+            <TotalGamesCard gamescount={this.props.gamescount} />
+            <TotalPlayersCard players={this.props.players} />
+            <RankedPlayersCard
+              rankedplayerscount={this.props.rankedplayerscount}
+            />
+          </CardColumns>
+        )}
+        {!this.props.user.name && (
+          <p>register or login to see something here...</p>
+        )}
+      </React.Fragment>
     );
   }
 }
