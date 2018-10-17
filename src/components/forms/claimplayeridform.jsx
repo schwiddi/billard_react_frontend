@@ -5,10 +5,13 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
 export default class ClaimePlayerId extends Component {
   state = {};
 
-  componentDidMount = () => {};
+  onPlayerChosen = playerid => {
+    console.log(playerid);
+  };
 
   render() {
     const players = this.props.players;
+
     return (
       <React.Fragment>
         <h1>Claime Player ID</h1>
@@ -30,7 +33,16 @@ export default class ClaimePlayerId extends Component {
                   {player.name}
                 </ListGroupItem>
               );
-            return <ListGroupItem key={player.id}>{player.name}</ListGroupItem>;
+            return (
+              <ListGroupItem
+                key={player.id}
+                action
+                tag="button"
+                //onClick={this.onPlayerChosen(player.id)}
+              >
+                {player.name}
+              </ListGroupItem>
+            );
           })}
         </ListGroup>
       </React.Fragment>
