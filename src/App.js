@@ -280,7 +280,13 @@ class App extends Component {
               exact
               render={props => {
                 if (!this.state.user.name) return <Redirect to="/" />;
-                return <Games games={this.state.games} {...props} />;
+                return (
+                  <Games
+                    games={this.state.games}
+                    user={this.state.user}
+                    {...props}
+                  />
+                );
               }}
             />
             <Route

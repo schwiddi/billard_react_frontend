@@ -5,7 +5,7 @@ import Game from './game';
 
 class Games extends Component {
   render() {
-    const { games } = this.props;
+    const { games, user } = this.props;
 
     return (
       <React.Fragment>
@@ -22,7 +22,7 @@ class Games extends Component {
           </thead>
           <tbody>
             {games.map(game => (
-              <Game key={game.id} game={game} />
+              <Game key={game.id} game={game} user={user} />
             ))}
           </tbody>
         </Table>

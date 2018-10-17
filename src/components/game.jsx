@@ -1,21 +1,43 @@
 import React, { Component } from 'react';
+import { Badge } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
 let defaultsytle = { fontSize: 18 };
 
 class Game extends Component {
   render() {
+    const { user } = this.props;
     return (
       <tr>
         <th className="text-left" scope="row">
           {this.props.game.id}
         </th>
-        <td className="text-right">{this.props.game.playerA}</td>
+        <td className="text-right">
+          {this.props.game.playerA === user.name &&
+            this.props.game.scoreplayerA === 0 && (
+              <Badge color="danger">is you!</Badge>
+            )}
+          {this.props.game.playerA === user.name &&
+            this.props.game.scoreplayerA === 1 && (
+              <Badge color="success">is you!</Badge>
+            )}{' '}
+          {this.props.game.playerA}
+        </td>
         <td className="text-center" colSpan="2">
           {this.formatScore(this.props.game.scoreplayerA)} :{' '}
           {this.formatScore(this.props.game.scoreplayerB)}
         </td>
-        <td className="text-left">{this.props.game.playerB}</td>
+        <td className="text-left">
+          {this.props.game.playerB}{' '}
+          {this.props.game.playerB === user.name &&
+            this.props.game.scoreplayerB === 0 && (
+              <Badge color="danger">is you!</Badge>
+            )}
+          {this.props.game.playerB === user.name &&
+            this.props.game.scoreplayerB === 1 && (
+              <Badge color="success">is you!</Badge>
+            )}
+        </td>
       </tr>
     );
   }
