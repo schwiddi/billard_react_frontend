@@ -85,15 +85,15 @@ class NavBar extends React.Component {
                     {this.props.user.name}
                   </DropdownToggle>
                   <DropdownMenu right>
-                    {/* <DropdownItem
+                    <DropdownItem
                       onClick={this.toggle}
                       tag={Link}
                       to="/profile"
                     >
                       Profile
-                    </DropdownItem> */}
-                    {this.props.user.claimedPlayerId === 0 ||
-                      (this.props.user.isAdmin === 1 && (
+                    </DropdownItem>
+                    {this.props.user.claimedPlayerId === 0 && (
+                      <React.Fragment>
                         <DropdownItem
                           onClick={this.toggle}
                           tag={Link}
@@ -101,7 +101,8 @@ class NavBar extends React.Component {
                         >
                           Claim Player ID
                         </DropdownItem>
-                      ))}
+                      </React.Fragment>
+                    )}
                     {this.props.user.isAdmin === 1 && (
                       <React.Fragment>
                         <DropdownItem divider />
