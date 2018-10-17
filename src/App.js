@@ -342,6 +342,7 @@ class App extends Component {
                   <ClaimPlayerIdForm
                     user={this.state.user}
                     players={this.state.players}
+                    onLogout={this.handleLogout}
                     {...props}
                   />
                 );
