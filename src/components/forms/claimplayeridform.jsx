@@ -33,7 +33,7 @@ export default class ClaimePlayerId extends Component {
 
     setTimeout(() => {
       this.props.onLogout();
-    }, 10000);
+    }, 12000);
   };
 
   render() {
@@ -58,7 +58,8 @@ export default class ClaimePlayerId extends Component {
           this.state.submitted === true && (
             <p>
               you have chosen: <strong>{this.state.playername}</strong>
-              ... in order for the app to work fine will log you out.. sorry
+              ... after this has been approved you will see the result.. in
+              order for the app to work fine will log you out.. sorry
             </p>
           )}
         <p />
