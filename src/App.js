@@ -338,7 +338,13 @@ class App extends Component {
               exact
               render={props => {
                 if (!this.state.user.name) return <Redirect to="/" />;
-                return <ClaimPlayerIdForm {...props} />;
+                return (
+                  <ClaimPlayerIdForm
+                    user={this.state.user}
+                    players={this.state.players}
+                    {...props}
+                  />
+                );
               }}
             />
             <Route
