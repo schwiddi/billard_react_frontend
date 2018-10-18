@@ -298,6 +298,7 @@ class App extends Component {
                   <Ranking
                     playersranked={this.state.playersranked}
                     playersunranked={this.state.playersunranked}
+                    user={this.state.user}
                     {...props}
                   />
                 );
