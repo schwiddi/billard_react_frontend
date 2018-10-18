@@ -6,7 +6,7 @@ import PlayerUnranked from './playerunranked';
 
 class Ranking extends Component {
   render() {
-    const { playersunranked, playersranked } = this.props;
+    const { playersunranked, playersranked, user } = this.props;
 
     return (
       <React.Fragment>
@@ -39,6 +39,7 @@ class Ranking extends Component {
                 playerid={player.id}
                 player={player}
                 index={index}
+                user={user}
               />
             ))}
           </tbody>
@@ -63,7 +64,12 @@ class Ranking extends Component {
           </thead>
           <tbody>
             {playersunranked.map((player, index) => (
-              <PlayerUnranked key={player.id} player={player} index={index} />
+              <PlayerUnranked
+                key={player.id}
+                player={player}
+                index={index}
+                user={user}
+              />
             ))}
           </tbody>
         </Table>
