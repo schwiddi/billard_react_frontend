@@ -13,14 +13,9 @@ class Game extends Component {
           {this.props.game.id}
         </th>
         <td className="text-right">
-          {this.props.game.playerA === user.name &&
-            this.props.game.scoreplayerA === 0 && (
-              <Badge color="danger">you</Badge>
-            )}
-          {this.props.game.playerA === user.name &&
-            this.props.game.scoreplayerA === 1 && (
-              <Badge color="success">you</Badge>
-            )}{' '}
+          {this.props.game.playerA === user.name && (
+            <Badge color="primary">you</Badge>
+          )}{' '}
           {this.props.game.playerA}
         </td>
         <td className="text-center" colSpan="2">
@@ -29,14 +24,9 @@ class Game extends Component {
         </td>
         <td className="text-left">
           {this.props.game.playerB}{' '}
-          {this.props.game.playerB === user.name &&
-            this.props.game.scoreplayerB === 0 && (
-              <Badge color="danger">you</Badge>
-            )}
-          {this.props.game.playerB === user.name &&
-            this.props.game.scoreplayerB === 1 && (
-              <Badge color="success">you</Badge>
-            )}
+          {this.props.game.playerB === user.name && (
+            <Badge color="primary">you</Badge>
+          )}
         </td>
       </tr>
     );
