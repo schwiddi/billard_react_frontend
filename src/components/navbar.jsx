@@ -43,13 +43,6 @@ class NavBar extends React.Component {
                   Home
                 </NavLink>
               </NavItem>
-              {this.props.user.canAddGame === 1 && (
-                <NavItem>
-                  <NavLink onClick={this.toggle} tag={Link} to="/addgame">
-                    New
-                  </NavLink>
-                </NavItem>
-              )}
               {this.props.user.name && (
                 <React.Fragment>
                   <NavItem>
@@ -103,17 +96,24 @@ class NavBar extends React.Component {
                         </DropdownItem>
                       </React.Fragment>
                     )}
+                    {this.props.user.canAddGame === 1 && (
+                      <DropdownItem
+                        onClick={this.toggle}
+                        tag={Link}
+                        to="/addgame"
+                      >
+                        New Game
+                      </DropdownItem>
+                    )}
+
                     {this.props.user.isAdmin === 1 && (
-                      <React.Fragment>
-                        <DropdownItem divider />
-                        <DropdownItem
-                          onClick={this.toggle}
-                          tag={Link}
-                          to="/myadminpage"
-                        >
-                          Admin
-                        </DropdownItem>
-                      </React.Fragment>
+                      <DropdownItem
+                        onClick={this.toggle}
+                        tag={Link}
+                        to="/myadminpage"
+                      >
+                        Admin
+                      </DropdownItem>
                     )}
                     <DropdownItem divider />
                     <DropdownItem onClick={this.props.onLogout}>
