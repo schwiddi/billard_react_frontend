@@ -9,6 +9,7 @@ import Home from './components/home';
 import Games from './components/games';
 import Ranking from './components/ranking';
 import AddGameForm from './components/forms/addgameform';
+import AddGameForm2 from './components/forms/addgameform2';
 import RegisterForm from './components/forms/registerform';
 import LoginForm from './components/forms/loginform';
 import ClaimPlayerIdForm from './components/forms/claimplayeridform';
@@ -32,8 +33,8 @@ axios.defaults.headers.common['x-auth-token'] = localStorage.getItem('token');
 
 // console.log(process.env);
 
-const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
-// const endPoint = 'http://localhost:3001/api/v1/';
+// const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
+const endPoint = 'http://localhost:3001/api/v1/';
 
 class App extends Component {
   state = {
@@ -310,7 +311,7 @@ class App extends Component {
               render={props => {
                 if (!this.state.user.name) return <Redirect to="/" />;
                 return (
-                  <AddGameForm
+                  <AddGameForm2
                     playernames={this.state.playernames}
                     onNewGame={this.handleNewGame}
                     {...props}
