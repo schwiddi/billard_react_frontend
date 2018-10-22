@@ -9,7 +9,6 @@ import Home from './components/home';
 import Games from './components/games';
 import Ranking from './components/ranking';
 import AddGameForm from './components/forms/addgameform';
-import AddGameForm2 from './components/forms/addgameform2';
 import RegisterForm from './components/forms/registerform';
 import LoginForm from './components/forms/loginform';
 import ClaimPlayerIdForm from './components/forms/claimplayeridform';
@@ -311,7 +310,7 @@ class App extends Component {
               render={props => {
                 if (!this.state.user.name) return <Redirect to="/" />;
                 return (
-                  <AddGameForm2
+                  <AddGameForm
                     playernames={this.state.playernames}
                     onNewGame={this.handleNewGame}
                     {...props}
