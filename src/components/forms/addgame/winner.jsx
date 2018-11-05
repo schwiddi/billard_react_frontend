@@ -2,28 +2,19 @@ import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 
 class Winner extends Component {
-  winnerbuttoncollor(playername) {
-    if (this.props.selectedwinner === playername) {
-      return 'senondary';
-    } else {
-      return 'primary';
-    }
-  }
-
   render() {
     return (
       <React.Fragment>
-        <h2>Winner?:</h2>
-
+        <h2>winner?</h2>
         {this.props.selectedplayers.map((playername, index) => (
           <Button
             key={index}
             type="button"
             value={playername}
             id={playername}
-            color={() => this.winnerbuttoncollor(playername)}
+            color="info"
             size="lg"
-            onClick={() => this.props.onDeSelect(playername)}
+            onClick={() => this.props.onSelectWinner(playername)}
           >
             {playername}
           </Button>

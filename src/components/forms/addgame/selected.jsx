@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
 
-class Select extends Component {
+class Selected extends Component {
   render() {
     return (
       <React.Fragment>
-        <h2>select players:</h2>
-        {this.props.playernames.map((playername, index) => (
+        <h2>selected players:</h2>
+        {this.props.selectedplayers.map((playername, index) => (
           <Button
             key={index}
             type="button"
@@ -14,7 +14,7 @@ class Select extends Component {
             id={playername}
             color="info"
             size="lg"
-            onClick={() => this.props.onSelect(playername)}
+            onClick={() => this.props.onDeSelect(playername)}
           >
             {playername}
           </Button>
@@ -25,4 +25,4 @@ class Select extends Component {
   }
 }
 
-export default Select;
+export default Selected;
