@@ -5,7 +5,7 @@ class FullOrHalf extends Component {
   render() {
     return (
       <React.Fragment>
-        <h2>full balls? :)</h2>
+        <h2>4. who had the solid balls? :)</h2>
         {this.props.selectedplayers.map((playername, index) => (
           <Button
             key={index}

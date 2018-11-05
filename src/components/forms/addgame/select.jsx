@@ -5,7 +5,7 @@ class Select extends Component {
   render() {
     return (
       <React.Fragment>
-        <h2>select players:</h2>
+        <h2>1. select players:</h2>
         {this.props.playernames.map((playername, index) => (
           <Button
             key={index}

@@ -223,16 +223,17 @@ class AddGameForm extends Component {
             )}
             <p />
             <p />
-            {this.state.page === 0 && (
-              <Button
-                type="button"
-                color="success"
-                size="lg"
-                onClick={() => this.handleNewPlayer()}
-              >
-                New Player
-              </Button>
-            )}
+            {this.state.page === 0 &&
+              this.state.selectedplayers.length !== 2 && (
+                <Button
+                  type="button"
+                  color="success"
+                  size="lg"
+                  onClick={() => this.handleNewPlayer()}
+                >
+                  New Player
+                </Button>
+              )}
             <p />
             <p />
             <p />

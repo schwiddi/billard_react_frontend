@@ -5,7 +5,7 @@ class Winner extends Component {
   render() {
     return (
       <React.Fragment>
-        <h2>winner?</h2>
+        <h2>2. select winner:</h2>
         {this.props.selectedplayers.map((playername, index) => (
           <Button
             key={index}

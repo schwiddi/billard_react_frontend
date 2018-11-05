@@ -5,7 +5,7 @@ class Started extends Component {
   render() {
     return (
       <React.Fragment>
-        <h2>started?</h2>
+        <h2>3. select starter:</h2>
         {this.props.selectedplayers.map((playername, index) => (
           <Button
             key={index}
