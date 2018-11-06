@@ -19,7 +19,7 @@ class Game extends Component {
           {this.props.game.playerA}
         </td>
         <td className="text-center" colSpan="2">
-          {this.formatScore(this.props.game.scoreplayerA)} :{' '}
+          {this.formatScore(this.props.game.scoreplayerA)}
           {this.formatScore(this.props.game.scoreplayerB)}
         </td>
         <td className="text-left">

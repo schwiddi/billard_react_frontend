@@ -8,7 +8,7 @@ import NavBar from './components/navbar';
 import Home from './components/home';
 import Games from './components/games';
 import Ranking from './components/ranking';
-import AddGameForm from './components/forms/addgameform';
+import AddGameForm from './components/forms/addgame/addgameform';
 import RegisterForm from './components/forms/registerform';
 import LoginForm from './components/forms/loginform';
 import ClaimPlayerIdForm from './components/forms/claimplayeridform';
