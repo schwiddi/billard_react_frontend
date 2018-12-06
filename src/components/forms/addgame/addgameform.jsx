@@ -96,17 +96,14 @@ class AddGameForm extends Component {
 
   handleSelectWinner = player => {
     this.setState({ selectedwinner: player });
-    this.handlePageInc();
   };
 
   handleSelectBegginner = player => {
     this.setState({ selectedbeginner: player });
-    this.handlePageInc();
   };
 
   handleSelectFull = player => {
     this.setState({ selectedfull: player });
-    this.handlePageInc();
   };
 
   handleSaveGame = () => {
@@ -143,7 +140,7 @@ class AddGameForm extends Component {
 
     this.props.onNewGame(newgame);
     this.setState({ newgame: {} });
-    this.props.history.push('/games');
+    this.props.history.push('/ranking');
   };
 
   handleNewPlayer = newplayer => {
@@ -223,17 +220,16 @@ class AddGameForm extends Component {
             )}
             <p />
             <p />
-            {this.state.page === 0 &&
-              this.state.selectedplayers.length !== 2 && (
-                <Button
-                  type="button"
-                  color="success"
-                  size="lg"
-                  onClick={() => this.handleNewPlayer()}
-                >
-                  New Player
-                </Button>
-              )}
+            {this.state.page === 0 && this.state.selectedplayers.length !== 2 && (
+              <Button
+                type="button"
+                color="success"
+                size="lg"
+                onClick={() => this.handleNewPlayer()}
+              >
+                New Player
+              </Button>
+            )}
             <p />
             <p />
             <p />
