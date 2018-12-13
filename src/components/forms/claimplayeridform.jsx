@@ -48,54 +48,49 @@ export default class ClaimePlayerId extends Component {
           famous r21.Billiard Table!
         </p>
         <p />
-        {this.state &&
-          this.state.submitted === false && (
-            <p>
-              So here are all players, the grayed out have already been picked
-              by a user..
-            </p>
-          )}
-        {this.state &&
-          this.state.submitted === true && (
-            <p>
-              you have chosen: <strong>{this.state.playername}</strong>
-              ... after this has been approved you will see the result.. in
-              order for the app to work fine will log you out.. sorry
-            </p>
-          )}
+        {this.state && this.state.submitted === false && (
+          <p>
+            So here are all players, the grayed out have already been picked by
+            a user..
+          </p>
+        )}
+        {this.state && this.state.submitted === true && (
+          <p>
+            you have chosen: <strong>{this.state.playername}</strong>
+            ... after this has been approved you will see the result.. in order
+            for the app to work fine will log you out.. sorry
+          </p>
+        )}
         <p />
-        {this.state &&
-          this.state.submitted === false && (
-            <ListGroup>
-              {players.map(player => {
-                if (player.user_id)
-                  return (
-                    <ListGroupItem key={player.id} disabled>
-                      {player.name}
-                    </ListGroupItem>
-                  );
+        {this.state && this.state.submitted === false && (
+          <ListGroup>
+            {players.map(player => {
+              if (player.user_id)
                 return (
-                  <ListGroupItem
-                    key={player.id}
-                    action
-                    tag="button"
-                    onClick={() => this.onPlayerChosen(player.id, player.name)}
-                  >
+                  <ListGroupItem key={player.id} disabled>
                     {player.name}
                   </ListGroupItem>
                 );
-              })}
-            </ListGroup>
-          )}
+              return (
+                <ListGroupItem
+                  key={player.id}
+                  action
+                  tag="button"
+                  onClick={() => this.onPlayerChosen(player.id, player.name)}
+                >
+                  {player.name}
+                </ListGroupItem>
+              );
+            })}
+          </ListGroup>
+        )}
         <p />
         <p />
-        {this.state &&
-          this.state.selected &&
-          !this.state.submitted && (
-            <Button color="primary" onClick={this.onSubmit}>
-              Claim to be: {this.state.playername}
-            </Button>
-          )}
+        {this.state && this.state.selected && !this.state.submitted && (
+          <Button color="primary" onClick={this.onSubmit}>
+            Claim to be: {this.state.playername}
+          </Button>
+        )}
       </React.Fragment>
     );
   }
