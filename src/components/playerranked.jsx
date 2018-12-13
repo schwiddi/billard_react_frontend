@@ -21,7 +21,7 @@ class PlayerRanked extends Component {
         <td className="text-center">{this.props.player.games_won}</td>
         <td className="text-center">{this.props.player.games_total}</td>
         <td className="text-center">
-          {parseFloat(this.props.player.games_win_lost).toFixed(1)}%
+          {parseFloat(this.props.player.games_win_lost).toFixed(2)}%
         </td>
       </tr>
     );
