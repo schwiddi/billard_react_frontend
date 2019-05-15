@@ -3,7 +3,7 @@ import axios from 'axios';
 import Users from './users';
 import { toast } from 'react-toastify';
 
-const endPoint = 'http://schwiddi.internet-box.ch:3001/api/v1/';
+const endPoint = 'https://r21.schwiddi.surf:3001/api/v1/';
 // const endPoint = 'http://localhost:3001/api/v1/';
 
 export default class MyAdminPage extends Component {
