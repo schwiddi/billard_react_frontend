@@ -1,5 +1,6 @@
 {
   "name": "billard_react_frontend",
+  "homepage": "http://r21.schwiddi.surf",
   "version": "1.0.0",
   "private": false,
   "dependencies": {
